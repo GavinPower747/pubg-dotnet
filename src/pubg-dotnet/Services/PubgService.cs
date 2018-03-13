@@ -8,6 +8,9 @@
 
         protected PubgService(string apiKey)
         {
+            if (string.IsNullOrEmpty(apiKey))
+                apiKey = PubgApiConfiguration.GetApiKey();
+
             ApiKey = apiKey;
         }
     }
