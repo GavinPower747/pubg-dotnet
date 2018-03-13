@@ -31,8 +31,5 @@ namespace Pubg.Net
 
         [JsonProperty("titleId")]
         public string TitleId { get; set; }
-
-        [JsonProperty("shardId")]
-        public string ShardId { get; set; }
     }
 }
