@@ -8,6 +8,7 @@ namespace Pubg.Net
 {
     public class PubgMatchService : PubgService
     {
+        public PubgMatchService() : base(null) { }
         public PubgMatchService(string apiKey) : base(apiKey) { }
 
         public virtual PubgMatch GetMatch(string regionId, string matchId)
