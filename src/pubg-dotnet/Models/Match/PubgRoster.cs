@@ -2,11 +2,8 @@
 
 namespace Pubg.Net
 {
-    public class PubgRoster
+    public class PubgRoster : PubgEntity
     {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
         [JsonProperty("team")]
         public PubgTeam Team { get; set; }
     }

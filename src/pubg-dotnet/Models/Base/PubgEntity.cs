@@ -6,5 +6,8 @@ namespace Pubg.Net
     {
         [JsonProperty("id")]
         public string Id { get; set; }
+
+        [JsonProperty("shardId")]
+        public string ShardId { get; set; }
     }
 }
