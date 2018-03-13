@@ -21,7 +21,32 @@ namespace Pubg.Net.Infrastructure
          [EnumMember(Value = "xbox-na")]
          XboxNorthAmerica,
 
-         [Region("xbox-oc")]
-         XboxOceania
+         [EnumMember(Value = "xbox-oc")]
+         XboxOceania,
+
+         //PC Regions
+         [EnumMember(Value = "pc-as")]
+         PCAsia,
+
+         [EnumMember(Value = "pc-eu")]
+         PCEurope,
+
+         [EnumMember(Value = "pc-kakao")]
+         PCKakao, //What?
+
+         [EnumMember(Value = "pc-krjp")]
+         PCKoreaJapan,
+
+         [EnumMember(Value = "pc-na")]
+         PCNorthAmerica,
+
+         [EnumMember(Value = "pc-oc")]
+         PCOceania,
+
+         [EnumMember(Value = "pc-sa")]
+         PCSouthAndCentralAmerica,
+
+         [EnumMember(Value = "pc-sea")]
+         PCSouthEastAsia
     }
 }
