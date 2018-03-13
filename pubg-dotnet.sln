@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F9EECF5B-816
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{67ADB0E2-8F40-40F8-B53F-7972BE5D8511}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "pubg-dotnet.Tests", "test\pubg-dotnet.UnitTests\pubg-dotnet.Tests.csproj", "{96E7E85F-67F2-4BE7-A2D6-607939FA5495}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "pubg-dotnet.Tests", "test\pubg-dotnet.Tests\pubg-dotnet.Tests.csproj", "{96E7E85F-67F2-4BE7-A2D6-607939FA5495}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
