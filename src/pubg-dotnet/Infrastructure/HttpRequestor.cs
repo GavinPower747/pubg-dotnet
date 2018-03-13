@@ -14,6 +14,11 @@ namespace Pubg.Net.Infrastructure
         static HttpRequestor()
         {
             HttpClient = new HttpClient();
+
+            var timeout = PubgApiConfiguration.GetHttpTimeout();
+
+            if (timeout.HasValue)
+                HttpClient.Timeout = timeout.Value;
         }
 
         public static string GetString(string url, string apiToken)
