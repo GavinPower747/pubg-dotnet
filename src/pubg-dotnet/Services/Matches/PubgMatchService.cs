@@ -1,5 +1,5 @@
-﻿using Pubg.Net.Constants;
-using Pubg.Net.Infrastructure;
+﻿using Pubg.Net.Infrastructure;
+using Pubg.Net.Values;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -8,6 +8,7 @@ namespace Pubg.Net
 {
     public class PubgMatchService : PubgService
     {
+        public PubgMatchService() : base(null) { }
         public PubgMatchService(string apiKey) : base(apiKey) { }
 
         public virtual PubgMatch GetMatch(string regionId, string matchId)
