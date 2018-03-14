@@ -6,7 +6,7 @@
 
         protected const string ResponseRootNode = "data";
 
-        protected PubgService(string apiKey)
+        protected PubgService(string apiKey = null)
         {
             if (string.IsNullOrEmpty(apiKey))
                 apiKey = PubgApiConfiguration.GetApiKey();
