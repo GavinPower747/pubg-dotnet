@@ -9,5 +9,10 @@
             internal static string MatchesEndpoint = PubgApiConfiguration.GetApiBase() + "/matches";
         }
 
+        internal static class Status
+        {
+            internal static string StatusEndpoint = PubgApiConfiguration.GetApiBase() + "/status";
+        }
+
     }
 }
