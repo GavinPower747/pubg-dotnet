@@ -13,7 +13,7 @@ namespace Pubg.Net
         public PubgMatchService() : base() { }
         public PubgMatchService(string apiKey) : base(apiKey) { }
 
-        public virtual PubgMatch GetMatch(Region region, string matchId)
+        public virtual PubgMatch GetMatch(Region region, string matchId, string apiKey = null)
         {
             var url = string.Format(Api.Matches.MatchesEndpoint + "/{1}", JsonConvert.ToString(region), matchId);
             apiKey = string.IsNullOrEmpty(apiKey) ? ApiKey : apiKey;
@@ -23,7 +23,7 @@ namespace Pubg.Net
             return JsonMapper<PubgMatch>.MapObject(matchJson, ResponseRootNode);
         }
 
-        public async virtual Task<PubgMatch> GetMatchAsync(Region region, string matchId, CancellationToken cancellationToken = default(CancellationToken))
+        public async virtual Task<PubgMatch> GetMatchAsync(Region region, string matchId, string apiKey = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             var url = string.Format(Api.Matches.MatchesEndpoint + "/{1}", JsonConvert.ToString(region), matchId);
             apiKey = string.IsNullOrEmpty(apiKey) ? ApiKey : apiKey;
