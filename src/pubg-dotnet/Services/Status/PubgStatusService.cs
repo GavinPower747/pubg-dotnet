@@ -8,7 +8,7 @@ namespace Pubg.Net
 {
     public class PubgStatusService : PubgService
     {
-        public PubgStatusService() : base(null) { }
+        public PubgStatusService() : base() { }
         public PubgStatusService(string apiKey) : base(apiKey) { }
 
         public PubgStatus GetStatus(string apiKey = null)
