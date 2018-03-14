@@ -12,7 +12,7 @@ namespace Pubg.Net.Infrastructure
             var jObject = JObject.Parse(json);
             var collection = jObject.SelectToken(rootNode);
 
-            return collection.Select(objJson => MapObject(objJson.ToString(), rootNode)).ToList();
+            return collection.Select(objJson => MapObject(objJson.ToString(), string.Empty)).ToList();
         }
 
         public static T MapObject(string json, string rootNode)
