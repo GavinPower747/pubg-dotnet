@@ -50,6 +50,7 @@ namespace Pubg.Net.Infrastructure
 
             request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", apiToken);
             request.Headers.Add("Accept-Encoding", "gzip");
+            request.Headers.Add("Accept", "application/vnd.api+json");
 
             return request;
         }
@@ -70,7 +71,7 @@ namespace Pubg.Net.Infrastructure
                 case HttpStatusCode.UnsupportedMediaType: return new PubgContentTypeException();
                 default:
                     //TODO: review when we know what the response object will be like
-                    return new PubgException(responseContent);
+                    return new PubgException(responseContent, response.StatusCode);
             }
         }
     }
