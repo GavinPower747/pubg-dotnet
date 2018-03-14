@@ -82,7 +82,7 @@ When making a request to one of our services, all of our request objects contain
     ApiKey = "myApiKey"
   }
   
-  matchService.GetMatches("myregion", request);
+  matchService.GetMatches(Region.(Region), request);
 ```
 
 3. Configuring your DI container
