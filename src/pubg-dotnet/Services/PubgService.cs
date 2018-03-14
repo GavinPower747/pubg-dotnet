@@ -1,5 +1,5 @@
-﻿namespace Pubg.Net
-{ 
+﻿namespace Pubg.Net.Services
+{
     public abstract class PubgService
     {
         public string ApiKey { get; set; }
