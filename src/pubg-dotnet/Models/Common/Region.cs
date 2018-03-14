@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Runtime.Serialization;
 using System.Text;
 
-namespace Pubg.Net.Infrastructure
+namespace Pubg.Net
 {
     [JsonConverter(typeof(StringEnumConverter))]
     public enum Region
