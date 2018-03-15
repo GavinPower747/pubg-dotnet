@@ -1,4 +1,5 @@
-﻿using Pubg.Net.Values;
+﻿using Pubg.Net.Configuration;
+using Pubg.Net.Values;
 using System;
 
 namespace Pubg.Net
@@ -26,5 +27,16 @@ namespace Pubg.Net
 
         internal static TimeSpan? GetHttpTimeout() => _httpTimeout;
         public static void SetHttpTimeout(TimeSpan timeout) => _httpTimeout = timeout;
+
+        public static void Configure(Action<PubgApiSettings> configAction)
+        {
+            PubgApiSettings settings = new PubgApiSettings();
+
+            configAction(settings);
+
+            _apiKey = settings.ApiKey;
+            _apiBaseUrl = settings.ApiBaseUrl;
+            _httpTimeout = settings.HttpTimeout;
+        }
     }
 }

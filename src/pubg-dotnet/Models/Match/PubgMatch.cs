@@ -1,9 +1,10 @@
 ﻿using Newtonsoft.Json;
+using Pubg.Net.Models.Base;
 using System.Collections.Generic;
 
 namespace Pubg.Net
 {
-    public class PubgMatch : PubgEntity
+    public class PubgMatch : PubgShardedEntity
     {
         [JsonProperty("createdAt")]
         public string CreatedAt { get; set; }
