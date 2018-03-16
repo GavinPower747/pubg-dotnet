@@ -4,10 +4,10 @@ namespace Pubg.Net
 {
     public class PubgRosterStats
     {
-        [JsonProperty("rank")]
+        [JsonProperty]
         public int Rank { get; set; }
 
-        [JsonProperty("teamId")]
+        [JsonProperty]
         public int TeamId { get; set; }
     }
 }

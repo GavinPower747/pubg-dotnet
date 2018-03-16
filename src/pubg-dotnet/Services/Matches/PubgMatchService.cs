@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Pubg.Net.Extensions;
+using Newtonsoft.Json;
+using JsonApiSerializer;
 
 namespace Pubg.Net
 {
@@ -20,7 +22,7 @@ namespace Pubg.Net
 
             var matchJson = HttpRequestor.GetString(url, apiKey);
 
-            return JsonMapper<PubgMatch>.MapObject(matchJson, ResponseRootNode);
+            return JsonConvert.DeserializeObject<PubgMatch>(matchJson, new JsonApiSerializerSettings());
         }
 
         public async virtual Task<PubgMatch> GetMatchAsync(Region region, string matchId, string apiKey = null, CancellationToken cancellationToken = default(CancellationToken))
@@ -30,7 +32,7 @@ namespace Pubg.Net
 
             var matchJson = await HttpRequestor.GetStringAsync(url, apiKey, cancellationToken);
 
-            return JsonMapper<PubgMatch>.MapObject(matchJson, ResponseRootNode);
+            return JsonConvert.DeserializeObject<PubgMatch>(matchJson, new JsonApiSerializerSettings());
         }
 
         public virtual IEnumerable<PubgMatch> GetMatches(Region region, GetPubgMatchRequest request)
@@ -40,7 +42,7 @@ namespace Pubg.Net
 
             var collectionJson = HttpRequestor.GetString(url, apiKey);
 
-            return JsonMapper<PubgMatch>.MapCollection(collectionJson, ResponseRootNode);
+            return JsonConvert.DeserializeObject<IEnumerable<PubgMatch>>(collectionJson, new JsonApiSerializerSettings());
         }
 
         public async virtual Task<IEnumerable<PubgMatch>> GetMatchesAsync(Region region, GetPubgMatchRequest request, CancellationToken cancellationToken = default(CancellationToken))
@@ -50,7 +52,7 @@ namespace Pubg.Net
 
             var collectionJson = await HttpRequestor.GetStringAsync(url, ApiKey, cancellationToken);
 
-            return JsonMapper<PubgMatch>.MapCollection(collectionJson, ResponseRootNode);
+            return JsonConvert.DeserializeObject<IEnumerable<PubgMatch>>(collectionJson, new JsonApiSerializerSettings());
         }
     }
 }

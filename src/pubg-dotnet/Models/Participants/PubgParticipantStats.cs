@@ -4,85 +4,85 @@ namespace Pubg.Net
 {
     public class PubgParticipantStats
     {
-        [JsonProperty]
+        [JsonProperty("DBNOs")]
         public int DBNOs { get; set; }
 
-        [JsonProperty("assists")]
+        [JsonProperty]
         public int Assists { get; set; }
 
-        [JsonProperty("boosts")]
+        [JsonProperty]
         public int Boosts { get; set; }
 
-        [JsonProperty("damageDealt")]
+        [JsonProperty]
         public int DamageDealt { get; set; }
 
-        [JsonProperty("deathType")]
+        [JsonProperty]
         public string DeathType { get; set; }
 
-        [JsonProperty("headshotKills")]
+        [JsonProperty]
         public int HeadshotKills { get; set; }
 
-        [JsonProperty("heals")]
+        [JsonProperty]
         public int Heals { get; set; }
 
-        [JsonProperty("killPlace")]
+        [JsonProperty]
         public int KillPlace { get; set; }
 
-        [JsonProperty("killPointsDelta")]
+        [JsonProperty]
         public int KillPointsDelta { get; set; }
 
-        [JsonProperty("killStreaks")]
+        [JsonProperty]
         public int KillStreaks { get; set; }
 
-        [JsonProperty("kills")]
+        [JsonProperty]
         public int Kills { get; set; }
 
-        [JsonProperty("lastKillPoints")]
+        [JsonProperty]
         public int LastKillPoints { get; set; }
 
-        [JsonProperty("lastWinPoints")]
+        [JsonProperty]
         public int LastWinPoints { get; set; }
 
-        [JsonProperty("longestKill")]
+        [JsonProperty]
         public int LongestKill { get; set; }
 
-        [JsonProperty("mostDamage")]
+        [JsonProperty]
         public int MostDamage { get; set; }
 
-        [JsonProperty("name")]
+        [JsonProperty]
         public string Name { get; set; }
 
-        [JsonProperty("playerId")]
+        [JsonProperty]
         public string PlayerId { get; set; }
 
-        [JsonProperty("revives")]
+        [JsonProperty]
         public int Revives { get; set; }
 
-        [JsonProperty("rideDistance")]
+        [JsonProperty]
         public int RideDistance { get; set; }
 
-        [JsonProperty("roadKills")]
+        [JsonProperty]
         public int RoadKills { get; set; }
 
-        [JsonProperty("teamKills")]
+        [JsonProperty]
         public int TeamKills { get; set; }
 
-        [JsonProperty("timeSurvived")]
+        [JsonProperty]
         public int TimeSurvived { get; set; }
 
-        [JsonProperty("vehicleDestroys")]
+        [JsonProperty]
         public int VehicleDestroys { get; set; }
 
-        [JsonProperty("walkDistance")]
+        [JsonProperty]
         public int WalkDistance { get; set; }
 
-        [JsonProperty("weaponsAcquired")]
+        [JsonProperty]
         public int WeaponsAcquired { get; set; }
 
-        [JsonProperty("winPlace")]
+        [JsonProperty]
         public int WinPlace { get; set; }
 
-        [JsonProperty("winPointsDelta")]
+        [JsonProperty]
         public int WinPointsDelta { get; set; }
     }
 }

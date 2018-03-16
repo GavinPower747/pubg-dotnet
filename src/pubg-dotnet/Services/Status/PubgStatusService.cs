@@ -1,4 +1,6 @@
-﻿using Pubg.Net.Infrastructure;
+﻿using JsonApiSerializer;
+using Newtonsoft.Json;
+using Pubg.Net.Infrastructure;
 using Pubg.Net.Services;
 using Pubg.Net.Values;
 using System.Threading;
@@ -18,7 +20,7 @@ namespace Pubg.Net
 
             var objectJson = HttpRequestor.GetString(url, apiKey);
 
-            return JsonMapper<PubgStatus>.MapObject(objectJson, ResponseRootNode);
+            return JsonConvert.DeserializeObject<PubgStatus>(objectJson, new JsonApiSerializerSettings());
         }
 
         public virtual async Task<PubgStatus> GetStatusAsync(string apiKey = null, CancellationToken cancellationToken = default(CancellationToken))
@@ -28,7 +30,7 @@ namespace Pubg.Net
 
             var objectJson = await HttpRequestor.GetStringAsync(url, apiKey, cancellationToken);
 
-            return JsonMapper<PubgStatus>.MapObject(objectJson, ResponseRootNode);
+            return JsonConvert.DeserializeObject<PubgStatus>(objectJson, new JsonApiSerializerSettings());
         }
     }
 }

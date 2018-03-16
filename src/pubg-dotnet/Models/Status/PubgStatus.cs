@@ -5,7 +5,7 @@ namespace Pubg.Net
 {
     public class PubgStatus : PubgEntity
     {
-        [JsonProperty("attributes")]
+        [JsonProperty]
         public PubgStatusAttributes Attributes { get; set; }
     }
 }

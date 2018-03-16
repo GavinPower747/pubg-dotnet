@@ -5,13 +5,13 @@ namespace Pubg.Net
 {
     public class PubgPlayer : PubgEntity
     {
-        [JsonProperty("name")]
+        [JsonProperty]
         public string Name { get; set; }
 
-        [JsonProperty("patchVersion")]
+        [JsonProperty]
         public string PatchVersion { get; set; }
 
-        [JsonProperty("titleId")]
+        [JsonProperty]
         public string TitleId { get; set; }
     }
 }

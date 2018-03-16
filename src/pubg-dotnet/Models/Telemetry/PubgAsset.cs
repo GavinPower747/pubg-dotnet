@@ -4,28 +4,28 @@ namespace Pubg.Net
 {
     public class PubgAsset
     {
-        [JsonProperty("id")]
+        [JsonProperty]
         public string Id { get; set; }
 
-        [JsonProperty("titleId")]
+        [JsonProperty]
         public string TitleId { get; set; }
 
-        [JsonProperty("shardId")]
+        [JsonProperty]
         public string ShardId { get; set; }
 
-        [JsonProperty("name")]
+        [JsonProperty]
         public string Name { get; set; }
 
-        [JsonProperty("createdAt")]
+        [JsonProperty]
         public string CreatedAt { get; set; }
 
-        [JsonProperty("filename")]
+        [JsonProperty]
         public string Filename { get; set; }
 
-        [JsonProperty("contentType")]
+        [JsonProperty]
         public string ContentType { get; set; }
 
-        [JsonProperty("url")]
+        [JsonProperty]
         public string Url { get; set; }
     }
 }

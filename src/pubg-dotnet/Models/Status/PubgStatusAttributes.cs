@@ -4,10 +4,10 @@ namespace Pubg.Net
 {
     public class PubgStatusAttributes
     {
-        [JsonProperty("releasedAt")]
+        [JsonProperty]
         public string ReleasedAt { get; set; }
 
-        [JsonProperty("version")]
+        [JsonProperty]
         public string Version { get; set; }
     }
 }

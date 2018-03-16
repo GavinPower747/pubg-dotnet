@@ -1,44 +1,39 @@
 ﻿using Newtonsoft.Json;
-using Pubg.Net.Infrastructure.Attributes;
-using Pubg.Net.Infrastructure.JsonConverters;
 using Pubg.Net.Models.Base;
 using System.Collections.Generic;
 
 namespace Pubg.Net
 {
-    [JsonConverter(typeof(JsonPathConverter))]
     public class PubgMatch : PubgShardedEntity
     {
-        [JsonProperty("attributes.createdAt")]
+        [JsonProperty]
         public string CreatedAt { get; set; }
 
-        [JsonProperty("attributes.duration")]
+        [JsonProperty]
         public int Duration { get; set; }
 
-        [JsonProperty("rosters")]
-        [RelatedEnitity("rosters")]
+        [JsonProperty]
         public IEnumerable<PubgRoster> Rosters { get; set; }
 
-        [JsonProperty("rounds")]
-        public IEnumerable<PubgRound> Rounds { get; set; }
+        [JsonProperty]
+        public PubgRound Rounds { get; set; }
 
-        [JsonProperty("assets")]
-        [RelatedEnitity("assets")]
+        [JsonProperty]
         public IEnumerable<PubgAsset> Assets { get; set; }
 
-        [JsonProperty("stats")]
-        public IEnumerable<PubgMatchStat> Stats { get; set; }
+        [JsonProperty]
+        public PubgMatchStats Stats { get; set; }
 
-        [JsonProperty("attributes.gameMode")]
+        [JsonProperty]
         public string GameMode { get; set; }
 
-        [JsonProperty("attributes.patchVersion")]
+        [JsonProperty]
         public string PatchVersion { get; set; }
 
-        [JsonProperty("attributes.titleId")]
+        [JsonProperty]
         public string TitleId { get; set; }
 
-        [JsonProperty("links")]
-        public PubgMatchLinks Links { get; set; }
+        [JsonProperty]
+        public Dictionary<string, object> Links { get; set; }
     }
 }

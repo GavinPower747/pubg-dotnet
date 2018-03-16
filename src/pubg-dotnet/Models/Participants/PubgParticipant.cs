@@ -5,13 +5,13 @@ namespace Pubg.Net
 {
     public class PubgParticipant : PubgShardedEntity
     {
-        [JsonProperty("stats")]
+        [JsonProperty]
         public PubgParticipantStats Stats { get; set; }
 
-        [JsonProperty("actor")]
+        [JsonProperty]
         public string Actor { get; set; }
 
-        [JsonProperty("player")]
+        [JsonProperty]
         public PubgPlayer Player { get; set; }
     }
 }

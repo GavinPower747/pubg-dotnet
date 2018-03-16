@@ -1,6 +1,6 @@
 ﻿namespace Pubg.Net
 {
-    public class PubgMatchStat
+    public class PubgMatchStats
     {
         //Review when documentation improves
     }
