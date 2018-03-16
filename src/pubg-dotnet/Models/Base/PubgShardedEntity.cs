@@ -4,7 +4,7 @@ namespace Pubg.Net.Models.Base
 {
     public abstract class PubgShardedEntity : PubgEntity
     {
-        [JsonProperty("shardId")]
+        [JsonProperty("attributes.shardId")]
         public string ShardId { get; set; }
     }
 }
