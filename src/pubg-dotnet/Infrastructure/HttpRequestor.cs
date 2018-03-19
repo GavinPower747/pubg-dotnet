@@ -70,8 +70,8 @@ namespace Pubg.Net.Infrastructure
                 case HttpStatusCode.Unauthorized: return new PubgUnauthorizedException();
                 case HttpStatusCode.UnsupportedMediaType: return new PubgContentTypeException();
                 default:
-                    //TODO: review when we know what the response object will be like
-                    return new PubgException(responseContent, response.StatusCode);
+                    var errors = ErrorMapper.MapErrors(responseContent);
+                    return new PubgException("Errors have occured with your request", response.StatusCode, errors);
             }
         }
     }

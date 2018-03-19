@@ -6,31 +6,34 @@ namespace Pubg.Net
 {
     public class PubgMatch : PubgShardedEntity
     {
-        [JsonProperty("createdAt")]
+        [JsonProperty]
         public string CreatedAt { get; set; }
 
-        [JsonProperty("duration")]
+        [JsonProperty]
         public int Duration { get; set; }
 
-        [JsonProperty("rosters")]
+        [JsonProperty]
         public IEnumerable<PubgRoster> Rosters { get; set; }
 
-        [JsonProperty("rounds")]
-        public IEnumerable<PubgRound> Rounds { get; set; }
+        [JsonProperty]
+        public PubgRound Rounds { get; set; }
 
-        [JsonProperty("assets")]
+        [JsonProperty]
         public IEnumerable<PubgAsset> Assets { get; set; }
 
-        [JsonProperty("stats")]
-        public IEnumerable<PubgStat> Stats { get; set; }
+        [JsonProperty]
+        public PubgMatchStats Stats { get; set; }
 
-        [JsonProperty("gameMode")]
+        [JsonProperty]
         public string GameMode { get; set; }
 
-        [JsonProperty("patchVersion")]
+        [JsonProperty]
         public string PatchVersion { get; set; }
 
-        [JsonProperty("titleId")]
+        [JsonProperty]
         public string TitleId { get; set; }
+
+        [JsonProperty]
+        public Dictionary<string, object> Links { get; set; }
     }
 }

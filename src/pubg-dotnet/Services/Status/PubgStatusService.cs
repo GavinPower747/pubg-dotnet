@@ -1,4 +1,6 @@
-﻿using Pubg.Net.Infrastructure;
+﻿using JsonApiSerializer;
+using Newtonsoft.Json;
+using Pubg.Net.Infrastructure;
 using Pubg.Net.Services;
 using Pubg.Net.Values;
 using System.Threading;
@@ -11,24 +13,24 @@ namespace Pubg.Net
         public PubgStatusService() : base() { }
         public PubgStatusService(string apiKey) : base(apiKey) { }
 
-        public PubgStatus GetStatus(string apiKey = null)
+        public virtual PubgStatus GetStatus(string apiKey = null)
         {
             var url = Api.Status.StatusEndpoint;
             apiKey = string.IsNullOrEmpty(apiKey) ? ApiKey : apiKey;
 
             var objectJson = HttpRequestor.GetString(url, apiKey);
 
-            return JsonMapper<PubgStatus>.MapObject(objectJson, ResponseRootNode);
+            return JsonConvert.DeserializeObject<PubgStatus>(objectJson, new JsonApiSerializerSettings());
         }
 
-        public async Task<PubgStatus> GetStatusAsync(string apiKey = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<PubgStatus> GetStatusAsync(string apiKey = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             var url = Api.Status.StatusEndpoint;
             apiKey = string.IsNullOrEmpty(apiKey) ? ApiKey : apiKey;
 
             var objectJson = await HttpRequestor.GetStringAsync(url, apiKey, cancellationToken);
 
-            return JsonMapper<PubgStatus>.MapObject(objectJson, ResponseRootNode);
+            return JsonConvert.DeserializeObject<PubgStatus>(objectJson, new JsonApiSerializerSettings());
         }
     }
 }

@@ -1,15 +1,17 @@
 ﻿using Newtonsoft.Json;
 using Pubg.Net.Models.Base;
-using System.Collections.Generic;
 
 namespace Pubg.Net
 {
     public class PubgParticipant : PubgShardedEntity
     {
-        [JsonProperty("stats")]
-        public IEnumerable<PubgStat> Stats { get; set; }
+        [JsonProperty]
+        public PubgParticipantStats Stats { get; set; }
 
-        [JsonProperty("actor")]
+        [JsonProperty]
         public string Actor { get; set; }
+
+        [JsonProperty]
+        public PubgPlayer Player { get; set; }
     }
 }
