@@ -14,7 +14,7 @@ namespace Pubg.Net
         public int Boosts { get; set; }
 
         [JsonProperty]
-        public int DamageDealt { get; set; }
+        public double DamageDealt { get; set; }
 
         [JsonProperty]
         public string DeathType { get; set; }
@@ -44,7 +44,7 @@ namespace Pubg.Net
         public int LastWinPoints { get; set; }
 
         [JsonProperty]
-        public int LongestKill { get; set; }
+        public double LongestKill { get; set; }
 
         [JsonProperty]
         public int MostDamage { get; set; }
@@ -59,7 +59,7 @@ namespace Pubg.Net
         public int Revives { get; set; }
 
         [JsonProperty]
-        public int RideDistance { get; set; }
+        public double RideDistance { get; set; }
 
         [JsonProperty]
         public int RoadKills { get; set; }
@@ -68,13 +68,13 @@ namespace Pubg.Net
         public int TeamKills { get; set; }
 
         [JsonProperty]
-        public int TimeSurvived { get; set; }
+        public double TimeSurvived { get; set; }
 
         [JsonProperty]
         public int VehicleDestroys { get; set; }
 
         [JsonProperty]
-        public int WalkDistance { get; set; }
+        public double WalkDistance { get; set; }
 
         [JsonProperty]
         public int WeaponsAcquired { get; set; }
