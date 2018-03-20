@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Pubg.Net.Infrastructure;
+using Pubg.Net.Infrastructure.JsonContractResolvers;
 using Pubg.Net.Services;
 using System.Collections.Generic;
 using System.Threading;
@@ -11,26 +12,26 @@ namespace Pubg.Net
     {
         public virtual IEnumerable<PubgTelemetryEvent> GetTelemetry(PubgAsset asset)
         {
-            return GetTelemetry(asset.Url);
+            return GetTelemetry(asset.Url, asset.ShardId);
         }
 
-        public virtual IEnumerable<PubgTelemetryEvent> GetTelemetry(string url)
+        public virtual IEnumerable<PubgTelemetryEvent> GetTelemetry(string url, string shardId)
         {
             var collectionJson = HttpRequestor.GetString(url);
 
-            return JsonConvert.DeserializeObject<IEnumerable<PubgTelemetryEvent>>(url);
+            return JsonConvert.DeserializeObject<IEnumerable<PubgTelemetryEvent>>(collectionJson, new JsonSerializerSettings { ContractResolver = new TelemetryContractResolver(shardId) });
         }
 
         public virtual async Task<IEnumerable<PubgTelemetryEvent>> GetTelemetryAsync(PubgAsset asset, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await GetTelemetryAsync(asset.Url, cancellationToken);
+            return await GetTelemetryAsync(asset.Url, asset.ShardId, cancellationToken);
         }
 
-        public virtual async Task<IEnumerable<PubgTelemetryEvent>> GetTelemetryAsync(string url, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<IEnumerable<PubgTelemetryEvent>> GetTelemetryAsync(string url, string shardId, CancellationToken cancellationToken = default(CancellationToken))
         {
             var collectionJson = await HttpRequestor.GetStringAsync(url, cancellationToken);
 
-            return JsonConvert.DeserializeObject<IEnumerable<PubgTelemetryEvent>>(url);
+            return JsonConvert.DeserializeObject<IEnumerable<PubgTelemetryEvent>>(collectionJson, new JsonSerializerSettings { ContractResolver = new TelemetryContractResolver(shardId) });
         }
     }
 }
