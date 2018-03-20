@@ -21,7 +21,7 @@ namespace Pubg.Net.Infrastructure
                 HttpClient.Timeout = timeout.Value;
         }
 
-        public static string GetString(string url, string apiToken)
+        public static string GetString(string url, string apiToken = null)
         {
             var request = BuildRequest(url, apiToken);
 
@@ -31,7 +31,7 @@ namespace Pubg.Net.Infrastructure
             return HandleResponse(response, responseContent);
         }
 
-        public async static Task<string> GetStringAsync(string url, string apiToken, CancellationToken cancellationToken)
+        public async static Task<string> GetStringAsync(string url, CancellationToken cancellationToken, string apiToken = null)
         {
             var request = BuildRequest(url, apiToken);
 
@@ -45,10 +45,9 @@ namespace Pubg.Net.Infrastructure
         {          
             var request = new HttpRequestMessage(HttpMethod.Get, url);
 
-            if (string.IsNullOrWhiteSpace(apiToken))
-                throw new PubgUnauthorizedException();
+            if(!string.IsNullOrEmpty(apiToken))
+                request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", apiToken);
 
-            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", apiToken);
             request.Headers.Add("Accept-Encoding", "gzip");
             request.Headers.Add("Accept", "application/vnd.api+json");
 
