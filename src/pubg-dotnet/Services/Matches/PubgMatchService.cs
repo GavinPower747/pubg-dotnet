@@ -31,7 +31,7 @@ namespace Pubg.Net
             var url = string.Format(Api.Matches.MatchesEndpoint + "/{1}", region.Serialize(), matchId);
             apiKey = string.IsNullOrEmpty(apiKey) ? ApiKey : apiKey;
 
-            var matchJson = await HttpRequestor.GetStringAsync(url, apiKey, cancellationToken);
+            var matchJson = await HttpRequestor.GetStringAsync(url, cancellationToken, apiKey);
 
             return JsonConvert.DeserializeObject<IEnumerable<PubgMatch>>(matchJson, new JsonApiSerializerSettings()).FirstOrDefault();
         }
@@ -51,7 +51,7 @@ namespace Pubg.Net
             var url = RequestBuilder.BuildRequestUrl(string.Format(Api.Matches.MatchesEndpoint, region.Serialize()), request);
             var apiKey = string.IsNullOrEmpty(request.ApiKey) ? ApiKey : request.ApiKey;
 
-            var collectionJson = await HttpRequestor.GetStringAsync(url, ApiKey, cancellationToken);
+            var collectionJson = await HttpRequestor.GetStringAsync(url, cancellationToken, apiKey);
 
             return JsonConvert.DeserializeObject<IEnumerable<PubgMatch>>(collectionJson, new JsonApiSerializerSettings());
         }

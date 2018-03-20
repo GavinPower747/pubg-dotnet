@@ -28,7 +28,7 @@ namespace Pubg.Net
             var url = Api.Status.StatusEndpoint;
             apiKey = string.IsNullOrEmpty(apiKey) ? ApiKey : apiKey;
 
-            var objectJson = await HttpRequestor.GetStringAsync(url, apiKey, cancellationToken);
+            var objectJson = await HttpRequestor.GetStringAsync(url, cancellationToken, apiKey);
 
             return JsonConvert.DeserializeObject<PubgStatus>(objectJson, new JsonApiSerializerSettings());
         }
