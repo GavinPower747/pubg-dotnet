@@ -3,7 +3,7 @@ using System.Linq;
 using System.Reflection;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Pubg.Net.Models.Telemetry.Events;
+using Pubg.Net;
 
 namespace Pubg.Net.Infrastructure.JsonConverters
 {

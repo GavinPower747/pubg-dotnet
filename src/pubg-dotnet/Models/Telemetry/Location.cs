@@ -1,4 +1,4 @@
-﻿namespace Pubg.Net.Models.Telemetry
+﻿namespace Pubg.Net
 {
     public class Location
     {

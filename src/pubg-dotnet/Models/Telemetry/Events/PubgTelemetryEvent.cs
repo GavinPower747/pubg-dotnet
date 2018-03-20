@@ -2,7 +2,7 @@
 using Pubg.Net.Infrastructure.JsonConverters;
 using System;
 
-namespace Pubg.Net.Models.Telemetry.Events
+namespace Pubg.Net
 {
     [JsonConverter(typeof(PubgTelemetryConverter))]
     public class PubgTelemetryEvent

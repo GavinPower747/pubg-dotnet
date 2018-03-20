@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace Pubg.Net.Models.Telemetry
+namespace Pubg.Net
 {
     public class PubgItemPackage
     {

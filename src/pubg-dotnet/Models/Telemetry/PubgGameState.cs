@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Pubg.Net.Models.Telemetry
+namespace Pubg.Net
 {
     public class PubgGameState
     {

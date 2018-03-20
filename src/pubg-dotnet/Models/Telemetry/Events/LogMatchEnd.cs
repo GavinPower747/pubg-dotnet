@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace Pubg.Net.Models.Telemetry.Events
+namespace Pubg.Net
 {
     public class LogMatchEnd : PubgTelemetryEvent
     {
