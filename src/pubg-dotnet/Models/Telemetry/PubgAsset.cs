@@ -1,17 +1,12 @@
 ﻿using Newtonsoft.Json;
+using Pubg.Net.Models.Base;
 
 namespace Pubg.Net
 {
-    public class PubgAsset
+    public class PubgAsset : PubgShardedEntity
     {
         [JsonProperty]
-        public string Id { get; set; }
-
-        [JsonProperty]
         public string TitleId { get; set; }
-
-        [JsonProperty]
-        public string ShardId { get; set; }
 
         [JsonProperty]
         public string Name { get; set; }
