@@ -2,7 +2,7 @@
 
 namespace Pubg.Net
 {
-    public class LogItemUnequip
+    public class LogItemUnequip : PubgTelemetryEvent
     {
         [JsonProperty]
         public PubgCharacter Character { get; set; }
