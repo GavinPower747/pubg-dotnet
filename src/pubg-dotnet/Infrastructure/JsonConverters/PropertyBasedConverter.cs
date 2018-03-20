@@ -18,7 +18,8 @@ namespace Pubg.Net.Infrastructure.JsonConverters
             JObject jObject = JObject.Load(reader);
             T target = Create(objectType, jObject);
 
-            serializer.Populate(jObject.CreateReader(), target);
+            if(target != null)
+                serializer.Populate(jObject.CreateReader(), target);
 
             return target;
         }

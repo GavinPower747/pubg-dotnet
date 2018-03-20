@@ -15,11 +15,11 @@ namespace Pubg.Net.Infrastructure.JsonConverters
             var typeName = (string)jObject.Property(jsonProp);
 
             var baseType = typeof(PubgTelemetryEvent);
-            var eventTypes = baseType.Assembly.GetTypes().Where(t => t.IsAssignableFrom(baseType));
+            var eventTypes = baseType.Assembly.GetTypes().Where(t => t.IsSubclassOf(baseType));
 
             foreach(var eventType in eventTypes)
             {
-                if (typeName.ToLowerInvariant().Equals(eventType.Name))
+                if (typeName.ToLowerInvariant().Equals(eventType.Name.ToLowerInvariant()))
                     return (PubgTelemetryEvent) Activator.CreateInstance(eventType);
             }
 
