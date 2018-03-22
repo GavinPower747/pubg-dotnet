@@ -9,7 +9,26 @@ Contact GavinPower747 on the Pubg Api Discord for more details
 ## Installation
 
 ### Install via Nuget
-**Coming soon...**
+
+From the nuget command line:
+
+	nuget install Pubg-DotNet
+
+From the .Net CLI
+
+  dotnet add package Pubg-DotNet 
+
+From Package Manager:
+
+	PM> Install-Package Pubg-DotNet
+
+From within Visual Studio:
+
+1. Open the Solution Explorer.
+2. Right-click on a project within your solution.
+3. Click on *Manage NuGet Packages...*
+4. Click on the *Browse* tab and search for "Pubg-DotNet".
+5. Click on the Pubg-DotNet package, select the appropriate version in the right-tab and click *Install*.
 
 ## Configuring Api Key
 
