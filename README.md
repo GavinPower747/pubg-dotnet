@@ -16,7 +16,7 @@ From the nuget command line:
 
 From the .Net CLI
 
-  dotnet add package Pubg-DotNet 
+	dotnet add package Pubg-DotNet 
 
 From Package Manager:
 
