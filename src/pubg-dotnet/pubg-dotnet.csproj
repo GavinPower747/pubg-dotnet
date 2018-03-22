@@ -1,9 +1,42 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <Description>Sync and Async client library for communicating with the Pubg Developer API supporting .net standard 2.0</Description>
+    <AssemblyTitle>Pubg.Net</AssemblyTitle>
+    <VersionPrefix>0.7</VersionPrefix>
+    <Version>0.7</Version>
+    <Authors>Gavin Power</Authors>
+    <TargetFramework>netstandard2.0;net45</TargetFramework>
+    <AssemblyName>Pubg.Net</AssemblyName>
+    <PackageId>Pubg-DotNet</PackageId>
+    <PackageTags>pubg;playerunknown;battlegrounds;developer;api</PackageTags>
+    <PackageProjectUrl>https://github.com/GavinPower747/pubg-dotnet</PackageProjectUrl>
+    <PackageTargetFallback Condition=" '$(TargetFramework)' == 'netstandard2.0' ">$(PackageTargetFallback);netcoreapp1.0</PackageTargetFallback>
+    <NetStandardImplicitPackageVersion Condition=" '$(TargetFramework)' == 'netstandard2.0' ">1.6.1</NetStandardImplicitPackageVersion>
+    <SignAssembly>True</SignAssembly>
+  </PropertyGroup>
+  
+  <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>Pubg.Net</RootNamespace>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Product>Pubg.Net</Product>
   </PropertyGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="JsonApiSerializer" Version="1.2.0" />
