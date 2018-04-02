@@ -15,5 +15,9 @@
             internal static string StatusEndpoint = PubgApiConfiguration.GetApiBase() + "/status";
         }
 
+        internal static class Players
+        {
+            internal static string PlayersEndpoint = ShardedBaseUrl + "/players";
+        }
     }
 }

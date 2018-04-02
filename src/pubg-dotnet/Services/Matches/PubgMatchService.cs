@@ -16,7 +16,7 @@ namespace Pubg.Net
         public PubgMatchService() : base() { }
         public PubgMatchService(string apiKey) : base(apiKey) { }
 
-        public virtual PubgMatch GetMatch(Region region, string matchId, string apiKey = null)
+        public virtual PubgMatch GetMatch(PubgRegion region, string matchId, string apiKey = null)
         {
             var url = string.Format(Api.Matches.MatchesEndpoint + "/{1}", region.Serialize(), matchId);
             apiKey = string.IsNullOrEmpty(apiKey) ? ApiKey : apiKey;
@@ -26,7 +26,7 @@ namespace Pubg.Net
             return JsonConvert.DeserializeObject<IEnumerable<PubgMatch>>(matchJson, new JsonApiSerializerSettings()).FirstOrDefault();
         }
 
-        public async virtual Task<PubgMatch> GetMatchAsync(Region region, string matchId, string apiKey = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async virtual Task<PubgMatch> GetMatchAsync(PubgRegion region, string matchId, string apiKey = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             var url = string.Format(Api.Matches.MatchesEndpoint + "/{1}", region.Serialize(), matchId);
             apiKey = string.IsNullOrEmpty(apiKey) ? ApiKey : apiKey;
@@ -34,26 +34,6 @@ namespace Pubg.Net
             var matchJson = await HttpRequestor.GetStringAsync(url, cancellationToken, apiKey);
 
             return JsonConvert.DeserializeObject<IEnumerable<PubgMatch>>(matchJson, new JsonApiSerializerSettings()).FirstOrDefault();
-        }
-
-        public virtual IEnumerable<PubgMatch> GetMatches(Region region, GetPubgMatchRequest request)
-        {
-            var url = RequestBuilder.BuildRequestUrl(string.Format(Api.Matches.MatchesEndpoint, region.Serialize()), request);
-            var apiKey = string.IsNullOrEmpty(request.ApiKey) ? ApiKey : request.ApiKey;
-
-            var collectionJson = HttpRequestor.GetString(url, apiKey);
-
-            return JsonConvert.DeserializeObject<IEnumerable<PubgMatch>>(collectionJson, new JsonApiSerializerSettings());
-        }
-
-        public async virtual Task<IEnumerable<PubgMatch>> GetMatchesAsync(Region region, GetPubgMatchRequest request, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            var url = RequestBuilder.BuildRequestUrl(string.Format(Api.Matches.MatchesEndpoint, region.Serialize()), request);
-            var apiKey = string.IsNullOrEmpty(request.ApiKey) ? ApiKey : request.ApiKey;
-
-            var collectionJson = await HttpRequestor.GetStringAsync(url, cancellationToken, apiKey);
-
-            return JsonConvert.DeserializeObject<IEnumerable<PubgMatch>>(collectionJson, new JsonApiSerializerSettings());
         }
     }
 }

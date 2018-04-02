@@ -1,7 +1,11 @@
 ﻿using Pubg.Net.Exceptions;
+using System;
+using System.IO;
+using System.IO.Compression;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -13,7 +17,12 @@ namespace Pubg.Net.Infrastructure
 
         static HttpRequestor()
         {
-            HttpClient = new HttpClient();
+            var clientHandler = new HttpClientHandler
+            {
+                AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
+            };
+
+            HttpClient = new HttpClient(clientHandler);
 
             var timeout = PubgApiConfiguration.GetHttpTimeout();
 
@@ -68,6 +77,7 @@ namespace Pubg.Net.Infrastructure
             {
                 case HttpStatusCode.Unauthorized: return new PubgUnauthorizedException();
                 case HttpStatusCode.UnsupportedMediaType: return new PubgContentTypeException();
+                case HttpStatusCode.NotFound: return new PubgNotFoundException();
                 default:
                     var errors = ErrorMapper.MapErrors(responseContent);
                     return new PubgException("Errors have occured with your request", response.StatusCode, errors);

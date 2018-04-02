@@ -3,7 +3,7 @@ using Pubg.Net.Models.Base;
 
 namespace Pubg.Net
 {
-    public class PubgPlayer : PubgEntity
+    public class PubgMatchPlayer : PubgEntity
     {
         [JsonProperty]
         public string Name { get; set; }

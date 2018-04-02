@@ -30,6 +30,9 @@ From within Visual Studio:
 4. Click on the *Browse* tab and search for "Pubg-DotNet".
 5. Click on the Pubg-DotNet package, select the appropriate version in the right-tab and click *Install*.
 
+# Contributions
+All contributions are welcome, feel free to create an issue to suggest improvements/missing features or just submit a PR to our Development branch with any work you want to contribute yourself.
+
 ## Configuring Api Key
 
 There are a number of ways to configure your api key. You can choose any of the below methods based on your circumstances, you only need to follow one of the examples below.

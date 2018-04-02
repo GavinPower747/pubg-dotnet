@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Pubg.Net.Extensions;
 using Pubg.Net.Infrastructure;
 using Pubg.Net.Infrastructure.JsonContractResolvers;
 using Pubg.Net.Services;
@@ -10,28 +11,28 @@ namespace Pubg.Net
 {
     public class PubgTelemetryService : PubgService
     {
-        public virtual IEnumerable<PubgTelemetryEvent> GetTelemetry(PubgAsset asset)
+        public virtual IEnumerable<PubgTelemetryEvent> GetTelemetry(PubgRegion region, PubgAsset asset)
         {
-            return GetTelemetry(asset.Url, asset.ShardId);
+            return GetTelemetry(region, asset.Url);
         }
 
-        public virtual IEnumerable<PubgTelemetryEvent> GetTelemetry(string url, string shardId)
+        public virtual IEnumerable<PubgTelemetryEvent> GetTelemetry(PubgRegion region, string url)
         {
             var collectionJson = HttpRequestor.GetString(url);
 
-            return JsonConvert.DeserializeObject<IEnumerable<PubgTelemetryEvent>>(collectionJson, new JsonSerializerSettings { ContractResolver = new TelemetryContractResolver(shardId) });
+            return JsonConvert.DeserializeObject<IEnumerable<PubgTelemetryEvent>>(collectionJson, new JsonSerializerSettings { ContractResolver = new TelemetryContractResolver(region.Serialize())});
         }
 
-        public virtual async Task<IEnumerable<PubgTelemetryEvent>> GetTelemetryAsync(PubgAsset asset, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<IEnumerable<PubgTelemetryEvent>> GetTelemetryAsync(PubgRegion region, PubgAsset asset, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await GetTelemetryAsync(asset.Url, asset.ShardId, cancellationToken);
+            return await GetTelemetryAsync(region, asset.Url, cancellationToken);
         }
 
-        public virtual async Task<IEnumerable<PubgTelemetryEvent>> GetTelemetryAsync(string url, string shardId, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<IEnumerable<PubgTelemetryEvent>> GetTelemetryAsync(PubgRegion region, string url, CancellationToken cancellationToken = default(CancellationToken))
         {
             var collectionJson = await HttpRequestor.GetStringAsync(url, cancellationToken);
 
-            return JsonConvert.DeserializeObject<IEnumerable<PubgTelemetryEvent>>(collectionJson, new JsonSerializerSettings { ContractResolver = new TelemetryContractResolver(shardId) });
+            return JsonConvert.DeserializeObject<IEnumerable<PubgTelemetryEvent>>(collectionJson, new JsonSerializerSettings { ContractResolver = new TelemetryContractResolver(region.Serialize()) });
         }
     }
 }

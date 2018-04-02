@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 namespace Pubg.Net
 {
     [JsonConverter(typeof(StringEnumConverter))]
-    public enum Region
+    public enum PubgRegion
     {
          //Xbox Regions
          [EnumMember(Value = "xbox-as")]
