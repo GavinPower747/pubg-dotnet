@@ -48,7 +48,7 @@ namespace Pubg.Net.Infrastructure
             if(!string.IsNullOrEmpty(apiToken))
                 request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", apiToken);
 
-            request.Headers.Add("Accept-Encoding", "gzip");
+            //request.Headers.Add("Accept-Encoding", "gzip");
             request.Headers.Add("Accept", "application/vnd.api+json");
 
             return request;
@@ -68,6 +68,7 @@ namespace Pubg.Net.Infrastructure
             {
                 case HttpStatusCode.Unauthorized: return new PubgUnauthorizedException();
                 case HttpStatusCode.UnsupportedMediaType: return new PubgContentTypeException();
+                case HttpStatusCode.NotFound: return new PubgNotFoundException();
                 default:
                     var errors = ErrorMapper.MapErrors(responseContent);
                     return new PubgException("Errors have occured with your request", response.StatusCode, errors);
