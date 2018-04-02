@@ -1,7 +1,11 @@
 ﻿using Pubg.Net.Exceptions;
+using System;
+using System.IO;
+using System.IO.Compression;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -13,7 +17,12 @@ namespace Pubg.Net.Infrastructure
 
         static HttpRequestor()
         {
-            HttpClient = new HttpClient();
+            var clientHandler = new HttpClientHandler
+            {
+                AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
+            };
+
+            HttpClient = new HttpClient(clientHandler);
 
             var timeout = PubgApiConfiguration.GetHttpTimeout();
 
@@ -48,7 +57,7 @@ namespace Pubg.Net.Infrastructure
             if(!string.IsNullOrEmpty(apiToken))
                 request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", apiToken);
 
-            //request.Headers.Add("Accept-Encoding", "gzip");
+            request.Headers.Add("Accept-Encoding", "gzip");
             request.Headers.Add("Accept", "application/vnd.api+json");
 
             return request;
