@@ -1,26 +1,21 @@
 ﻿using Newtonsoft.Json;
 using Pubg.Net.Models.Base;
+using System;
 
 namespace Pubg.Net
 {
-    public class PubgAsset : PubgShardedEntity
+    public class PubgAsset : PubgEntity
     {
         [JsonProperty]
-        public string TitleId { get; set; }
-
-        [JsonProperty]
-        public string Name { get; set; }
-
-        [JsonProperty]
-        public string CreatedAt { get; set; }
-
-        [JsonProperty]
-        public string Filename { get; set; }
-
-        [JsonProperty]
-        public string ContentType { get; set; }
+        public DateTime CreatedAt { get; set; }
 
         [JsonProperty]
         public string Url { get; set; }
+
+        [JsonProperty]
+        public string Description { get; set; }
+
+        [JsonProperty]
+        public string Name { get; set; }
     }
 }

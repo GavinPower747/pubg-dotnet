@@ -12,6 +12,6 @@ namespace Pubg.Net
         public string Actor { get; set; }
 
         [JsonProperty]
-        public PubgPlayer Player { get; set; }
+        public PubgMatchPlayer Player { get; set; }
     }
 }
