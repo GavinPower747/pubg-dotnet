@@ -1,0 +1,51 @@
+version: 1.0.0.{build}
+image: Visual Studio 2017
+skip_tags: true
+
+environment:
+  PUBG_API_KEY:
+    secure: nKrgxWXcCr2GkDIzvtKvEyQNVprTcJzHx56hiB8A8Od16OmcYU6Kv78s7cEecYKo+S/C0Hi6B26cZ+V6RqFw7cpHgj6Vpix9uUfkuluYfWikvgqfFgs1EV3PVMP4Nw6rur3lo2KWe7UOHfI5mDqz4aLB0pWY0oP2uAIvYVsRdB7tk6K6raIiNJL5z+REh6ramPPyGgK3DUjgpUoGByKts8pS8dvMrER48JPoGHfjymbX5zzsypGX/V+48VykcP8FBT+0HQYEAiT3l7/udER+EtZ1FwG6XNZ90NnuL+idcAbKqq0EXfOCPHc8UHDUS6nhmIfRER+0MwgHNeNv3uMo736hw57Vv5TXRN+7aRgonoF/DB9692kjqdTdn5kBJR0l3LEjrNzI3UrBkmaRfoKZxw==
+
+deploy:
+- provider: NuGet
+  api_key:
+    secure: tRU8M11vrr1xpuhdmBSOSSjQZXAEQVGHR1dP+f/c+RkA1+ZJqCDY2Rsv9Nk4okeT
+  on:
+    branch: master
+
+- provider: Github
+  release: Pubg.Net-v$(appveyor_build_version)
+  description: 'Release of $(appveyor_build_version)'
+  auth_token:
+    secure: 6bQdMR64k8Hsx3yyvLjkfD9K16vBFYQg85PqD5tAypkcBRe8cSsofZAgavw1QrVm
+  artifact: /.*\.nupkg/            # upload all NuGet packages to release assets
+  draft: false
+  prerelease: false
+  on:
+    branch: master                 # release from master branch only
+  
+
+before_build:
+  - dotnet --info
+  - ps: Write-Host $("Performing Dot Net Restore")
+  - dotnet restore
+
+build:
+  parallel: true
+
+build_script:
+  - ps: Write-Host $("Performing build")
+  - dotnet build -c Release src\pubg-dotnet
+  - dotnet build -c Debug src\pubg-dotnet
+  - dotnet build -c Debug test\pubg-dotnet.Tests
+
+after_build:
+  - ps: Write-Host $("Performing dotnet pack")
+  - dotnet pack -c Release src\pubg-dotnet
+
+test_script:
+  - ps: Write-Host $("Starting tests")
+  - dotnet test test\pubg-dotnet.Tests\pubg-dotnet.Tests.csproj
+
+artifacts:
+  - path: '**\*.nupkg'
