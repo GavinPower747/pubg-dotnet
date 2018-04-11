@@ -31,7 +31,10 @@ namespace Pubg.Net
          PCKakao, //What?
 
          [EnumMember(Value = "pc-krjp")]
-         PCKoreaJapan,
+         PCKorea,
+
+         [EnumMember(Value = "pc-jp")]
+         PCJapan,
 
          [EnumMember(Value = "pc-na")]
          PCNorthAmerica,
