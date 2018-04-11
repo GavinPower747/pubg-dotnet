@@ -1,9 +1,9 @@
 ﻿using Pubg.Net;
 using System.Collections.Generic;
 
-namespace pubg.net.Tests.Util
+namespace Pubg.Net.Tests.Util
 {
-    //Far from ideal but the only way I can think of
+    //Far from ideal but there is no way to query a list of players
     public static class KnownPlayers
     {
         public static Dictionary<PubgRegion, string[]> KnownPlayerNames = new Dictionary<PubgRegion, string[]>
@@ -13,7 +13,7 @@ namespace pubg.net.Tests.Util
                 new string[] 
                 {
                     "jebuzjack",
-                    "dutsization",
+                    "Dutsization",
                     "irishdiablo",
                     "chmcl08"
                 }
@@ -26,7 +26,8 @@ namespace pubg.net.Tests.Util
                 PubgRegion.PCEurope,
                 new string[]
                 {
-                    "account.dbe0812874d642f7be09814cfb92c89a"
+                    "account.dbe0812874d642f7be09814cfb92c89a",
+                    "account.e9548dfdc07847b29bb51cbcc0b4cde7"
                 }
             }
         };
