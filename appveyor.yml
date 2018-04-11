@@ -32,7 +32,7 @@ after_build:
 
 test_script:
   - ps: Write-Host $("Starting tests")
-  - dotnet test src\pubg-dotnet.Tests\pubg-dotnet.Tests.csproj
+  - dotnet test test\pubg-dotnet.Tests\pubg-dotnet.Tests.csproj
 
 artifacts:
   - path: '**\*.nupkg'
