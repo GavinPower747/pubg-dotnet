@@ -1,5 +1,6 @@
 version: 1.0.0.{build}
 image: Visual Studio 2017
+skip_tags: true
 
 environment:
   PUBG_API_KEY:
@@ -11,6 +12,19 @@ deploy:
     secure: tRU8M11vrr1xpuhdmBSOSSjQZXAEQVGHR1dP+f/c+RkA1+ZJqCDY2Rsv9Nk4okeT
   on:
     branch: master
+
+- provider: Github
+  release: Pubg.Net-v$(appveyor_build_version)
+  description: 'Release of $(appveyor_build_version)'
+  provider: GitHub
+  auth_token:
+    secure: 6bQdMR64k8Hsx3yyvLjkfD9K16vBFYQg85PqD5tAypkcBRe8cSsofZAgavw1QrVm
+  artifact: /.*\.nupkg/            # upload all NuGet packages to release assets
+  draft: false
+  prerelease: false
+  on:
+    branch: master                 # release from master branch only
+  
 
 before_build:
   - dotnet --info
