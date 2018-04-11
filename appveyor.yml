@@ -23,11 +23,11 @@ deploy:
   description: 'Release of $(appveyor_build_version)'
   auth_token:
     secure: 6bQdMR64k8Hsx3yyvLjkfD9K16vBFYQg85PqD5tAypkcBRe8cSsofZAgavw1QrVm
-  artifact: /.*\.nupkg/            # upload all NuGet packages to release assets
+  artifact: /.*\.nupkg/            
   draft: false
   prerelease: false
   on:
-    branch: master                 # release from master branch only
+    branch: master
   
 
 before_build:
