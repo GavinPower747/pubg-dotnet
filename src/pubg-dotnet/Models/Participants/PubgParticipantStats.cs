@@ -4,6 +4,12 @@ namespace Pubg.Net
 {
     public class PubgParticipantStats
     {
+        [JsonProperty]
+        public string Name { get; set; }
+
+        [JsonProperty]
+        public string PlayerId { get; set; }
+
         [JsonProperty("DBNOs")]
         public int DBNOs { get; set; }
 
@@ -48,12 +54,6 @@ namespace Pubg.Net
 
         [JsonProperty]
         public int MostDamage { get; set; }
-
-        [JsonProperty]
-        public string Name { get; set; }
-
-        [JsonProperty]
-        public string PlayerId { get; set; }
 
         [JsonProperty]
         public int Revives { get; set; }
