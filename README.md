@@ -1,7 +1,7 @@
 ![PUBG Developer API Logo](https://developer.playbattlegrounds.com/d3fa01d31345504b60eacea226638a02.png)
 
 
-# Pubg-DotNet [![Build status](https://ci.appveyor.com/api/projects/status/w3vk9q4avelqpgcp?svg=true)](https://ci.appveyor.com/project/GavinPower747/pubg-dotnet) 
+# Pubg-DotNet [![Build status](https://ci.appveyor.com/api/projects/status/w3vk9q4avelqpgcp?svg=true)](https://ci.appveyor.com/project/GavinPower747/pubg-dotnet)
 
 A sync/async client library for communicating with the Pubg developer api. Supporting .Net Standard 2.0.
 
