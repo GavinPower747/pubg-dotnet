@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace Pubg.Net.Infrastructure
 {
-    public static class ErrorMapper
+    internal static class ErrorMapper
     {
         public static List<PubgError> MapErrors(string json)
         {
