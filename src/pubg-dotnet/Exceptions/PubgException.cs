@@ -9,7 +9,7 @@ namespace Pubg.Net.Exceptions
     {
         public HttpStatusCode HttpStatusCode { get; set; }
         public IEnumerable<PubgError> Errors { get; set; }
-
+        
         public PubgException(string errorMessage) : base(errorMessage) { }
         public PubgException(string errorMessage, Exception innerException) : base(errorMessage, innerException) { }
         public PubgException(string errorMessage, HttpStatusCode statusCode) : base(errorMessage) { }

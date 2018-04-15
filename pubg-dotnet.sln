@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{67ADB0E2-8
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "pubg-dotnet.Tests", "test\pubg-dotnet.Tests\pubg-dotnet.Tests.csproj", "{96E7E85F-67F2-4BE7-A2D6-607939FA5495}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pubg-dotnet.UnitTests", "test\pubg-dotnet.UnitTests\pubg-dotnet.UnitTests.csproj", "{3A628517-FF68-420B-90CF-B899F064D71D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{96E7E85F-67F2-4BE7-A2D6-607939FA5495}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{96E7E85F-67F2-4BE7-A2D6-607939FA5495}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{96E7E85F-67F2-4BE7-A2D6-607939FA5495}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A628517-FF68-420B-90CF-B899F064D71D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A628517-FF68-420B-90CF-B899F064D71D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A628517-FF68-420B-90CF-B899F064D71D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A628517-FF68-420B-90CF-B899F064D71D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,6 +38,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{8328DC72-47E0-48D5-9D46-190022FBAA85} = {F9EECF5B-8169-4AE5-A281-AB7F25A94F29}
 		{96E7E85F-67F2-4BE7-A2D6-607939FA5495} = {67ADB0E2-8F40-40F8-B53F-7972BE5D8511}
+		{3A628517-FF68-420B-90CF-B899F064D71D} = {67ADB0E2-8F40-40F8-B53F-7972BE5D8511}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {391B40FE-FE56-4259-9C99-7EC1F5970B4D}
