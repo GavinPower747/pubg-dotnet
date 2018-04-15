@@ -4,6 +4,7 @@ using System.Reflection;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Pubg.Net;
+using Pubg.Net.Models.Telemetry.Events;
 
 namespace Pubg.Net.Infrastructure.JsonConverters
 {
@@ -14,16 +15,19 @@ namespace Pubg.Net.Infrastructure.JsonConverters
             var jsonProp = objectType.GetProperty(nameof(PubgTelemetryEvent.Type)).GetCustomAttribute<JsonPropertyAttribute>().PropertyName;
             var typeName = (string)jObject.Property(jsonProp);
 
-            var baseType = typeof(PubgTelemetryEvent);
-            var eventTypes = baseType.Assembly.GetTypes().Where(t => t.IsSubclassOf(baseType));
-
-            foreach(var eventType in eventTypes)
+            if (typeName != null)
             {
-                if (typeName.ToLowerInvariant().Equals(eventType.Name.ToLowerInvariant()))
-                    return (PubgTelemetryEvent) Activator.CreateInstance(eventType);
+                var baseType = typeof(PubgTelemetryEvent);
+                var eventTypes = baseType.Assembly.GetTypes().Where(t => t.IsSubclassOf(baseType));
+
+                foreach (var eventType in eventTypes)
+                {
+                    if (typeName.ToLowerInvariant().Equals(eventType.Name.ToLowerInvariant()))
+                        return (PubgTelemetryEvent)Activator.CreateInstance(eventType);
+                }
             }
 
-            return null;
+            return new UnknownTelemetryEvent(jObject);
         }
     }
 }
