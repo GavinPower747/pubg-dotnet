@@ -1,4 +1,4 @@
-![PUBG Developer API Logo](https://developer.playbattlegrounds.com/d3fa01d31345504b60eacea226638a02.png)
+![PUBG Developer API Logo](https://d2s2kb1tq1008e.cloudfront.net/assets/pubg/logo_large-afe8529ba2ac244baf36a5f5fff0051af9c5fb3e20d846712a2d5a96e9b27cf2.png)
 
 
 # Pubg-DotNet [![Build status](https://ci.appveyor.com/api/projects/status/w3vk9q4avelqpgcp?svg=true)](https://ci.appveyor.com/project/GavinPower747/pubg-dotnet)
