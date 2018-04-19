@@ -1,4 +1,5 @@
 ﻿using Pubg.Net.Exceptions;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -74,6 +75,7 @@ namespace Pubg.Net.Infrastructure
                 case HttpStatusCode.Unauthorized: return new PubgUnauthorizedException();
                 case HttpStatusCode.UnsupportedMediaType: return new PubgContentTypeException();
                 case HttpStatusCode.NotFound: return new PubgNotFoundException();
+                case (HttpStatusCode) 429: return new PubgTooManyRequestsException(response.Headers.GetValues("X-RateLimit-Reset").FirstOrDefault()); 
                 default:
                     var errors = ErrorMapper.MapErrors(responseContent);
                     return new PubgException("Errors have occured with your request", response.StatusCode, errors);

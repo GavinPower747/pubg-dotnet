@@ -1,4 +1,4 @@
-version: 1.0.0.{build}
+version: 1.1.0.{build}
 image: Visual Studio 2017
 skip_tags: true
 
@@ -50,7 +50,10 @@ after_build:
 
 test_script:
   - ps: Write-Host $("Starting tests")
+  - ps: Write-Host $("Running full tests")
   - dotnet test test\pubg-dotnet.Tests\pubg-dotnet.Tests.csproj
+  - ps: Write-Host $("Running unit tests")
+  - dotnet test test\pubg-dotnet.UnitTests\pubg-dotnet.UnitTests.csproj
 
 artifacts:
   - path: '**\*.nupkg'

@@ -1,9 +1,11 @@
 ﻿using Pubg.Net;
 using Pubg.Net.Extensions;
 using Pubg.Net.Models.Base;
+using Pubg.Net.Models.Samples;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Pubg.Net.Tests.Util
 {
@@ -17,16 +19,32 @@ namespace Pubg.Net.Tests.Util
         public static string ApiKey => Environment.GetEnvironmentVariable("PUBG_API_KEY");
         public static List<PubgEntity> StoredItems { get; set; }
 
+        public static PubgMatchSample GetSamples(PubgRegion region)
+        {
+            var samples = StoredItems.OfType<PubgMatchSample>().FirstOrDefault(p => p.ShardId == region.Serialize());
+
+            if (samples != null)
+                return samples;
+
+            var sampleService = new PubgSamplesService(ApiKey);
+
+            samples = sampleService.GetMatchSamples(region);
+
+            StoredItems.Add(samples);
+
+            return samples;
+        }
+
         public static PubgPlayer GetPlayer(PubgRegion region)
         {
             var player = StoredItems.OfType<PubgPlayer>().FirstOrDefault(p => p.ShardId == region.Serialize());
 
             if (player != null)
                 return player;
-
+            
             var playerService = new PubgPlayerService(ApiKey);
-            var knownPlayerNames = KnownPlayers.KnownPlayerNames.FirstOrDefault(p => p.Key == region);
-            var players = playerService.GetPlayers(knownPlayerNames.Key, new GetPubgPlayersRequest { PlayerNames = knownPlayerNames.Value });
+            var playerNames = GetMatch(region).Rosters.SelectMany(r => r.Participants).Select(p => p.Stats.Name).Take(5);
+            var players = playerService.GetPlayers(region, new GetPubgPlayersRequest { PlayerNames = playerNames.ToArray() });
 
             StoredItems.AddRange(players);
 
@@ -40,8 +58,8 @@ namespace Pubg.Net.Tests.Util
             if (match != null)
                 return match;
 
-            var player = GetPlayer(region);
-            match = new PubgMatchService(ApiKey).GetMatch(region, player.MatchIds.First());
+            var samples = GetSamples(region);
+            match = new PubgMatchService(ApiKey).GetMatch(region, samples.MatchIds.First());
 
             StoredItems.Add(match);
 
