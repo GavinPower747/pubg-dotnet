@@ -1,20 +1,19 @@
 ﻿using Pubg.Net.Tests.Util;
-using Pubg.Net;
 using Pubg.Net.Exceptions;
 using System.Linq;
-using System.Threading.Tasks;
 using Xunit;
+using pubg.net.Tests;
 
 namespace Pubg.Net.Tests.Players
 {
-    public class PlayerTests
+    public class PlayerTests : TestBase
     {
         [Fact]
         public void Can_Get_Players_ByName()
         {
             var playerService = new PubgPlayerService(Storage.ApiKey);
 
-            KnownPlayers.KnownPlayerNames.TryGetValue(PubgRegion.PCEurope, out string[] playerNames);
+            var playerNames = Storage.GetMatch(PubgRegion.PCEurope).Rosters.SelectMany(r => r.Participants).Select(p => p.Stats.Name).Take(5).ToArray();
 
             var filter = new GetPubgPlayersRequest
             {
@@ -32,7 +31,7 @@ namespace Pubg.Net.Tests.Players
         {
             var playerService = new PubgPlayerService(Storage.ApiKey);
 
-            KnownPlayers.KnownPlayerIds.TryGetValue(PubgRegion.PCEurope, out string[] playerIds);
+            var playerIds = Storage.GetMatch(PubgRegion.PCEurope).Rosters.SelectMany(r => r.Participants).Select(p => p.Stats.PlayerId).Take(5).ToArray();
 
             var filter = new GetPubgPlayersRequest
             {

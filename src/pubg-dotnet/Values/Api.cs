@@ -19,5 +19,10 @@
         {
             internal static string PlayersEndpoint = ShardedBaseUrl + "/players";
         }
+
+        internal static class Samples
+        {
+            internal static string SamplesEndpoint = ShardedBaseUrl + "/samples";
+        }
     }
 }
