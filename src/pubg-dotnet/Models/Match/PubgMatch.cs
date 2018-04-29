@@ -35,5 +35,8 @@ namespace Pubg.Net
 
         [JsonProperty]
         public Dictionary<string, object> Links { get; set; }
+
+        [JsonProperty]
+        public string MapName { get; set; }
     }
 }
