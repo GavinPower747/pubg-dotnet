@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Pubg.Net.Models.Telemetry.Enums;
 
 namespace Pubg.Net
 {
@@ -11,7 +12,7 @@ namespace Pubg.Net
         public PubgCharacter Attacker { get; set; }
 
         [JsonProperty]
-        public string AttackType { get; set; }
+        public PubgAttackType AttackType { get; set; }
 
         [JsonProperty]
         public PubgItem Weapon { get; set; }

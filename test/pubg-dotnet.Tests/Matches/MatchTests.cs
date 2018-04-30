@@ -23,11 +23,16 @@ namespace Pubg.Net.Tests.Matches
             match.ShardId.Should().Equals(region.Serialize());
             match.Rosters.Should().NotBeNull();
 
+            Assert.All(match.Rosters, r => r.Stats.Rank.Should().BeGreaterThan(0));
+            match.Rosters.Should().ContainSingle(x => x.Won == true);
+
             var participants = match.Rosters.SelectMany(x => x.Participants);
 
             participants.Should().NotBeNullOrEmpty();
             
             Assert.All(participants, p => p.Stats.Should().NotBeNull());
+            Assert.All(participants, p => p.Stats.KillPlace.Should().BeGreaterThan(0));
+            Assert.All(participants, p => p.Stats.WinPlace.Should().BeGreaterThan(0));
             Assert.All(participants, p => p.ShardId.Should().Equals(region.Serialize()));
             Assert.All(participants, p => p.Id.Should().NotBeNullOrWhiteSpace());
         }

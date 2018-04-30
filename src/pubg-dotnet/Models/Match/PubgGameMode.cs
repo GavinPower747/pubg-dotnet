@@ -9,9 +9,15 @@ namespace Pubg.Net
     {
         [EnumMember(Value = "squad")]
         Squad,
+        [EnumMember(Value = "squad-fpp")]
+        SquadFPP,
         [EnumMember(Value = "solo")]
         Solo,
+        [EnumMember(Value = "solo-fpp")]
+        SoloFPP,
         [EnumMember(Value = "duo")]
-        Duo
+        Duo,
+        [EnumMember(Value = "duo-fpp")]
+        DuoFPP
     }
 }
