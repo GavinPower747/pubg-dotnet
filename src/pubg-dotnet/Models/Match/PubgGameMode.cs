@@ -13,7 +13,7 @@ namespace Pubg.Net
         SquadFPP,
         [EnumMember(Value = "solo")]
         Solo,
-        [EnumMember(Value = "solo-fpp"]
+        [EnumMember(Value = "solo-fpp")]
         SoloFPP,
         [EnumMember(Value = "duo")]
         Duo,
