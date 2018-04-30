@@ -1,11 +1,12 @@
 ﻿using Newtonsoft.Json;
+using Pubg.Net.Models.Telemetry.Enums;
 
 namespace Pubg.Net
 {
     public class PubgVehicle
     {
         [JsonProperty]
-        public string VehicleType { get; set; }
+        public PubgVehicleType VehicleType { get; set; }
 
         [JsonProperty]
         public string VehicleId { get; set; }

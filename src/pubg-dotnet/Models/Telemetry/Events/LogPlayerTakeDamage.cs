@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Pubg.Net.Models.Telemetry.Enums;
 
 namespace Pubg.Net
 {
@@ -17,7 +18,7 @@ namespace Pubg.Net
         public string DamageTypeCategory { get; set; }
 
         [JsonProperty]
-        public string DamageReason { get; set; }
+        public PubgDamageReason DamageReason { get; set; }
 
         [JsonProperty]
         public float Damage { get; set; }
