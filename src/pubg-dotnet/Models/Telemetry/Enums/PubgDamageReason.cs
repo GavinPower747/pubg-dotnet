@@ -1,10 +1,15 @@
-﻿using System.Runtime.Serialization;
+﻿using Newtonsoft.Json;
+using Pubg.Net.Infrastructure.Attributes;
+using Pubg.Net.Infrastructure.JsonConverters;
+using System.Runtime.Serialization;
 
 namespace Pubg.Net.Models.Telemetry.Enums
 {
+    [JsonConverter(typeof(DefaultValueStringEnumConverter))]
     public enum PubgDamageReason
     {
         [EnumMember(Value ="None")]
+        [DefaultEnumMember]
         None,
         [EnumMember(Value ="NonSpecific")]
         NonSpecific,
