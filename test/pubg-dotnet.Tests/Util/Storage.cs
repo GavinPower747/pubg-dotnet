@@ -65,5 +65,19 @@ namespace Pubg.Net.Tests.Util
 
             return match;
         }
+
+        public static PubgSeason GetSeason(PubgRegion region)
+        {
+            var season = StoredItems.OfType<PubgSeason>().FirstOrDefault();
+
+            if (season != null)
+                return season;
+
+            var seasons = new PubgSeasonService(ApiKey).GetSeasons(region).ToList();
+
+            seasons.ForEach(s => StoredItems.Add(s));
+
+            return seasons.FirstOrDefault();
+        }
     }
 }

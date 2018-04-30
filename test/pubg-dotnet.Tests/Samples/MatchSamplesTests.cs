@@ -27,7 +27,7 @@ namespace pubg.net.Tests.Samples
         {
             var region = PubgRegion.PCEurope;
             var samplesService = new PubgSamplesService(Storage.ApiKey);
-            var createdDate = DateTime.UtcNow.AddDays(-1);
+            var createdDate = DateTime.UtcNow.AddDays(-2);
 
             var matchSamples = samplesService.GetMatchSamples(region, new GetSamplesRequest { CreatedAtStart = createdDate });
 

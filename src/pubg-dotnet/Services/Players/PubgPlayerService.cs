@@ -54,5 +54,25 @@ namespace Pubg.Net
 
             return JsonConvert.DeserializeObject<IEnumerable<PubgPlayer>>(collectionJson, new JsonApiSerializerSettings());
         }
+
+        public virtual PubgPlayerSeason GetPlayerSeason(PubgRegion region, string playerId, string seasonId, string apiKey = null)
+        {
+            var url = string.Format(Api.Players.PlayerSeasonsEndpoint, region.Serialize(), playerId, seasonId);
+            apiKey = string.IsNullOrEmpty(apiKey) ? ApiKey : apiKey;
+
+            var seasonJson = HttpRequestor.GetString(url, apiKey);
+
+            return JsonConvert.DeserializeObject<PubgPlayerSeason>(seasonJson, new JsonApiSerializerSettings());
+        }
+
+        public async virtual Task<PubgPlayerSeason> GetPlayerSeasonAsync(PubgRegion region, string playerId, string seasonId, string apiKey = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var url = string.Format(Api.Players.PlayerSeasonsEndpoint, region.Serialize(), playerId, seasonId);
+            apiKey = string.IsNullOrEmpty(apiKey) ? ApiKey : apiKey;
+
+            var seasonJson = await HttpRequestor.GetStringAsync(url, cancellationToken, apiKey);
+
+            return JsonConvert.DeserializeObject<PubgPlayerSeason>(seasonJson, new JsonApiSerializerSettings());
+        }
     }
 }
