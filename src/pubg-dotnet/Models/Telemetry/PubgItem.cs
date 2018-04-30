@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Pubg.Net.Models.Telemetry.Enums;
 
 namespace Pubg.Net
 {
@@ -11,10 +12,10 @@ namespace Pubg.Net
         public int StackCount { get; set; }
 
         [JsonProperty]
-        public string Category { get; set; }
+        public PubgItemCategory Category { get; set; }
 
         [JsonProperty]
-        public string SubCategory { get; set; }
+        public PubgItemSubCategory SubCategory { get; set; }
 
         [JsonProperty]
         public string[] AttachedItems { get; set; }

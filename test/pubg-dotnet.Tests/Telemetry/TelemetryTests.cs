@@ -1,8 +1,8 @@
 ﻿using FluentAssertions;
 using Pubg.Net.Tests.Util;
-using Pubg.Net;
 using System.Linq;
 using Xunit;
+using Pubg.Net.Models.Telemetry.Events;
 using pubg.net.Tests;
 
 namespace Pubg.Net.Tests.Telemetry
@@ -19,6 +19,7 @@ namespace Pubg.Net.Tests.Telemetry
             var telemetry = telemetryService.GetTelemetry(PubgRegion.PCEurope, asset);
 
             telemetry.Should().NotBeEmpty();
+            Assert.All(telemetry, t => t.Should().NotBeOfType<UnknownTelemetryEvent>());
         }
     }
 }

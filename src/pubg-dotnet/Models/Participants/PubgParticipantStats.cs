@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Pubg.Net.Models.Participants;
 
 namespace Pubg.Net
 {
@@ -23,7 +24,7 @@ namespace Pubg.Net
         public double DamageDealt { get; set; }
 
         [JsonProperty]
-        public string DeathType { get; set; }
+        public PubgParticipantDeathType DeathType { get; set; }
 
         [JsonProperty]
         public int HeadshotKills { get; set; }
