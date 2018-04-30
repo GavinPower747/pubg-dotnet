@@ -18,11 +18,17 @@
         internal static class Players
         {
             internal static string PlayersEndpoint = ShardedBaseUrl + "/players";
+            internal static string PlayerSeasonsEndpoint = PlayersEndpoint + "/{1}/seasons/{2}";
         }
 
         internal static class Samples
         {
             internal static string SamplesEndpoint = ShardedBaseUrl + "/samples";
+        }
+
+        internal static class Seasons
+        {
+            internal static string SeasonsEndpoint = ShardedBaseUrl + "/seasons";
         }
     }
 }
