@@ -21,7 +21,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="JsonApiSerializer" Version="1.2.0" />
+    <PackageReference Include="JsonApiSerializer" Version="1.3.1" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
   </ItemGroup>
 

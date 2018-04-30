@@ -3,6 +3,7 @@ using Pubg.Net.Exceptions;
 using System.Linq;
 using Xunit;
 using pubg.net.Tests;
+using FluentAssertions;
 
 namespace Pubg.Net.Tests.Players
 {
@@ -42,6 +43,44 @@ namespace Pubg.Net.Tests.Players
 
             Assert.NotEmpty(players);
             Assert.All(players.Select(p => p.Id), id => playerIds.Contains(id));
+        }
+
+        [Fact]
+        public void Can_Get_Player()
+        {
+            var playerService = new PubgPlayerService(Storage.ApiKey);
+
+            var playerId = Storage.GetMatch(PubgRegion.PCEurope).Rosters.SelectMany(r => r.Participants).Select(p => p.Stats.PlayerId).FirstOrDefault();
+
+            var player = playerService.GetPlayer(PubgRegion.PCEurope, playerId);
+
+            player.Id.Should().NotBeNull();
+            player.MatchIds.Should().NotBeNullOrEmpty();
+            player.Name.Should().NotBeNullOrWhiteSpace();
+        }
+
+        [Fact]
+        public void Can_Get_Season_For_Player()
+        {
+            var playerService = new PubgPlayerService(Storage.ApiKey);
+
+            var region = PubgRegion.PCEurope;
+            var playerId = Storage.GetMatch(region).Rosters.SelectMany(r => r.Participants).Select(p => p.Stats.PlayerId).FirstOrDefault();
+            var seasonId = Storage.GetSeason(region).Id;
+
+            var playerSeason = playerService.GetPlayerSeason(region, playerId, seasonId);
+
+            playerSeason.Should().NotBeNull();
+            playerSeason.GameModeStats.Should().NotBeNull();
+            playerSeason.SeasonId.Should().NotBeNullOrWhiteSpace();
+            playerSeason.PlayerId.Should().NotBeNullOrWhiteSpace();
+            playerSeason.GameModeStats.Should().NotBeNull();
+            playerSeason.GameModeStats.Solo.Should().NotBeNull();
+            playerSeason.GameModeStats.SoloFPP.Should().NotBeNull();
+            playerSeason.GameModeStats.Duo.Should().NotBeNull();
+            playerSeason.GameModeStats.DuoFPP.Should().NotBeNull();
+            playerSeason.GameModeStats.Squad.Should().NotBeNull();
+            playerSeason.GameModeStats.SquadFPP.Should().NotBeNull();
         }
 
         [Fact]
