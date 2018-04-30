@@ -3,10 +3,11 @@ using Pubg.Net.Tests.Util;
 using System.Linq;
 using Xunit;
 using Pubg.Net.Models.Telemetry.Events;
+using pubg.net.Tests;
 
 namespace Pubg.Net.Tests.Telemetry
 {
-    public class TelemetryTests
+    public class TelemetryTests : TestBase
     {
         [Fact]
         public void Can_Pull_Telemetry_From_Match()

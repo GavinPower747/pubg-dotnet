@@ -5,19 +5,20 @@ using System.Linq;
 using Xunit;
 using Pubg.Net.Exceptions;
 using System;
+using pubg.net.Tests;
 
 namespace Pubg.Net.Tests.Matches
 {
-    public class MatchTests
+    public class MatchTests : TestBase
     {
         [Fact]
         public void Can_Retrieve_Match()
         {
             var region = PubgRegion.PCEurope;
-            var player = Storage.GetPlayer(region);
+            var samples = Storage.GetSamples(region);
             var matchService = new PubgMatchService(Storage.ApiKey);
 
-            var match = matchService.GetMatch(region, player.MatchIds.FirstOrDefault());
+            var match = matchService.GetMatch(region, samples.MatchIds.FirstOrDefault());
 
             match.ShardId.Should().Equals(region.Serialize());
             match.Rosters.Should().NotBeNull();
@@ -28,11 +29,6 @@ namespace Pubg.Net.Tests.Matches
             var participants = match.Rosters.SelectMany(x => x.Participants);
 
             participants.Should().NotBeNullOrEmpty();
-
-            var matchPlayer = participants.FirstOrDefault(p => p.Stats.PlayerId == player.Id);
-
-            matchPlayer.Should().NotBeNull();
-            matchPlayer.Stats.Name.Should().Equals(player.Name);
             
             Assert.All(participants, p => p.Stats.Should().NotBeNull());
             Assert.All(participants, p => p.Stats.KillPlace.Should().BeGreaterThan(0));
