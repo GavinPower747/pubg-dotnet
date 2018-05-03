@@ -2,9 +2,6 @@ version: 1.3.2.{build}
 image: Visual Studio 2017
 skip_tags: true
 
-environment:
-  PUBG_API_KEY: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI3MGZjZmRlMC0xZmQ2LTAxMzYtMDdlOC02ZDM1Zjc4YzJlODkiLCJpc3MiOiJnYW1lbG9ja2VyIiwiaWF0IjoxNTIzNDY1NDYyLCJwdWIiOiJibHVlaG9sZSIsInRpdGxlIjoicHViZyIsImFwcCI6InB1YmctZG90bmV0LWludGVncmF0aW9uLXRlc3Qta2V5Iiwic2NvcGUiOiJjb21tdW5pdHkiLCJsaW1pdCI6MTB9.effWQSYMoS8XJkndRDYRAEc-eDdmHOre8R4wBwBGGJs
-
 branches:
   only:
   - master
