@@ -8,7 +8,7 @@ namespace Pubg.Net.Models.Telemetry
         public string MatchId { get; set; }
 
         [JsonProperty]
-        public string MapName { get; set; }
+        public PubgMap MapName { get; set; }
 
         [JsonProperty]
         public float IsGame { get; set; }
