@@ -12,6 +12,8 @@ namespace Pubg.Net.Models.Participants
         [EnumMember(Value = "byplayer")]
         ByPlayer,
         [EnumMember(Value = "suicide")]
-        Suicide
+        Suicide,
+        [EnumMember(Value = "logout")]
+        Logout
     }
 }
