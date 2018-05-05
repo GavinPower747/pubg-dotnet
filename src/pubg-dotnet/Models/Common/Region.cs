@@ -27,6 +27,9 @@ namespace Pubg.Net
          [EnumMember(Value = "pc-eu")]
          PCEurope,
 
+         [EnumMember(Value = "pc-ru")]
+         PCRussia,
+
          [EnumMember(Value = "pc-kakao")]
          PCKakao, //What?
 
