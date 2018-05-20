@@ -21,6 +21,10 @@ namespace Pubg.Net.Tests.Telemetry
 
             telemetry.Should().NotBeEmpty();
             Assert.All(telemetry, t => t.Should().NotBeOfType<UnknownTelemetryEvent>());
+
+            var matchDefinition = telemetry.OfType<LogMatchDefinition>().FirstOrDefault();
+
+            matchDefinition.MatchId.Should().NotBeNullOrWhiteSpace();
         }
 
         [Fact]
@@ -35,6 +39,10 @@ namespace Pubg.Net.Tests.Telemetry
 
             telemetry.Should().NotBeEmpty();
             Assert.All(telemetry, t => t.Should().NotBeOfType<UnknownTelemetryEvent>());
+
+            var matchDefinition = telemetry.OfType<LogMatchDefinition>().FirstOrDefault();
+
+            matchDefinition.MatchId.Should().NotBeNullOrWhiteSpace();
         }
     }
 }
