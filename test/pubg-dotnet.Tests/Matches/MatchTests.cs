@@ -9,7 +9,7 @@ using pubg.net.Tests;
 
 namespace Pubg.Net.Tests.Matches
 {
-    public class MatchTests : TestBase
+    public class MatchTests
     {
         [Fact]
         public void Can_Retrieve_Match_ForPC()
