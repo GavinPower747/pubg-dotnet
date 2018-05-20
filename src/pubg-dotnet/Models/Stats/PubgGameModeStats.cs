@@ -29,6 +29,9 @@ namespace Pubg.Net.Models.Stats
         public int Heals { get; set; }
 
         [JsonProperty]
+        public float KillPoints { get; set; }
+
+        [JsonProperty]
         public int Kills { get; set; }
 
         [JsonProperty]
