@@ -1,7 +1,5 @@
 ﻿using Newtonsoft.Json;
-using Pubg.Net.Extensions;
 using Pubg.Net.Infrastructure;
-using Pubg.Net.Infrastructure.JsonContractResolvers;
 using Pubg.Net.Services;
 using System.Collections.Generic;
 using System.Threading;
@@ -20,7 +18,7 @@ namespace Pubg.Net
         {
             var collectionJson = HttpRequestor.GetString(url);
 
-            return JsonConvert.DeserializeObject<IEnumerable<PubgTelemetryEvent>>(collectionJson, new JsonSerializerSettings { ContractResolver = new TelemetryContractResolver(region.Serialize())});
+            return JsonConvert.DeserializeObject<IEnumerable<PubgTelemetryEvent>>(collectionJson);
         }
 
         public virtual async Task<IEnumerable<PubgTelemetryEvent>> GetTelemetryAsync(PubgRegion region, PubgAsset asset, CancellationToken cancellationToken = default(CancellationToken))
@@ -32,7 +30,7 @@ namespace Pubg.Net
         {
             var collectionJson = await HttpRequestor.GetStringAsync(url, cancellationToken);
 
-            return JsonConvert.DeserializeObject<IEnumerable<PubgTelemetryEvent>>(collectionJson, new JsonSerializerSettings { ContractResolver = new TelemetryContractResolver(region.Serialize()) });
+            return JsonConvert.DeserializeObject<IEnumerable<PubgTelemetryEvent>>(collectionJson);
         }
     }
 }
