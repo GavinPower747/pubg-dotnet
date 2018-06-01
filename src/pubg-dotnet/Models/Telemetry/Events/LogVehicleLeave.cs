@@ -9,5 +9,11 @@ namespace Pubg.Net
 
         [JsonProperty]
         public PubgVehicle Vehicle { get; set; }
+
+        [JsonProperty]
+        public float RideDistance { get; set; }
+
+        [JsonProperty]
+        public int SeatIndex { get; set; }
     }
 }

@@ -66,6 +66,9 @@ namespace Pubg.Net
         public int RoadKills { get; set; }
 
         [JsonProperty]
+        public float SwimDistance { get; set; }
+
+        [JsonProperty]
         public int TeamKills { get; set; }
 
         [JsonProperty]
