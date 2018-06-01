@@ -1,4 +1,4 @@
-version: 1.4.0.{build}
+version: 1.5.0.{build}
 image: Visual Studio 2017
 skip_tags: true
 
@@ -16,7 +16,7 @@ deploy:
 
 - provider: GitHub
   release: Pubg.Net-v$(appveyor_build_version)
-  description: 'Release of $(appveyor_build_version)'
+  description: ''
   auth_token:
     secure: 6bQdMR64k8Hsx3yyvLjkfD9K16vBFYQg85PqD5tAypkcBRe8cSsofZAgavw1QrVm
   artifact: /.*\.nupkg/            
