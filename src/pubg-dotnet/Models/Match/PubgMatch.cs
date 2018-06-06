@@ -38,5 +38,8 @@ namespace Pubg.Net
 
         [JsonProperty]
         public PubgMap MapName { get; set; }
+
+        [JsonProperty]
+        public bool IsCustomMatch { get; set; }
     }
 }
