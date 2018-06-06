@@ -25,7 +25,7 @@ namespace Pubg.Net
         public PubgMatchStats Stats { get; set; }
 
         [JsonProperty]
-        public string GameMode { get; set; }
+        public PubgGameMode GameMode { get; set; }
 
         [JsonProperty]
         public string PatchVersion { get; set; }
@@ -38,5 +38,8 @@ namespace Pubg.Net
 
         [JsonProperty]
         public PubgMap MapName { get; set; }
+
+        [JsonProperty]
+        public bool IsCustomMatch { get; set; }
     }
 }
