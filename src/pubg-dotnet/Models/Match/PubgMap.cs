@@ -14,6 +14,8 @@ namespace Pubg.Net
         [EnumMember( Value = "Erangel_Main" )]
         Erangel,
         [EnumMember( Value = "Desert_Main" )]
-        Miramar
+        Miramar,
+        [EnumMember(Value = "Savage_Main")]
+        Sanhok
     }
 }
