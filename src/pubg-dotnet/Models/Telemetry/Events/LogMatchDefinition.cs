@@ -6,5 +6,8 @@ namespace Pubg.Net
     {
         [JsonProperty]
         public string MatchId { get; set; }
+
+        [JsonProperty]
+        public string PingQuality { get; set; }
     }
 }

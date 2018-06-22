@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Pubg.Net.Models.Telemetry.Enums;
 
 namespace Pubg.Net
 {
@@ -21,5 +22,8 @@ namespace Pubg.Net
 
         [JsonProperty]
         public float Distance { get; set; }
+
+        [JsonProperty]
+        public PubgDamageReason DamageReason { get; set; }
     }
 }
