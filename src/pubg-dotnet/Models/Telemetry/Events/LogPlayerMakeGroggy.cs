@@ -1,15 +1,14 @@
 ﻿using Newtonsoft.Json;
-using Pubg.Net.Models.Telemetry.Enums;
 
-namespace Pubg.Net
+namespace Pubg.Net.Models.Telemetry.Events
 {
-    public class LogPlayerKill : PubgTelemetryEvent
+    public class LogPlayerMakeGroggy : PubgTelemetryEvent
     {
         [JsonProperty]
-        public int AttackId { get; set; }
+        public int AttackerId { get; set; }
 
         [JsonProperty]
-        public PubgCharacter Killer { get; set; }
+        public PubgCharacter Attacker { get; set; }
 
         [JsonProperty]
         public PubgCharacter Victim { get; set; }
@@ -24,6 +23,9 @@ namespace Pubg.Net
         public float Distance { get; set; }
 
         [JsonProperty]
-        public PubgDamageReason DamageReason { get; set; }
+        public bool IsAttackerInVehicle { get; set; }
+
+        [JsonProperty]
+        public int DBNOId { get; set; }
     }
 }

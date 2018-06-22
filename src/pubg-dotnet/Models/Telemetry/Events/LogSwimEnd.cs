@@ -6,5 +6,8 @@ namespace Pubg.Net.Models.Telemetry.Events
     {
         [JsonProperty]
         public PubgCharacter Character { get; set; }
+
+        [JsonProperty]
+        public float SwimDistance { get; set; }
     }
 }
