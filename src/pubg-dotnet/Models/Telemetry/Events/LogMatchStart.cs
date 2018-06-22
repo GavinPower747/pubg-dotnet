@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Pubg.Net.Infrastructure.JsonConverters;
 using Pubg.Net.Models.Telemetry;
 using System.Collections.Generic;
 
@@ -22,7 +23,8 @@ namespace Pubg.Net
         public int TeamSize { get; set; }
 
         [JsonProperty]
-        public PubgBlueZoneConfig[] BlueZoneCustomOptions { get; set; }
+        [JsonConverter(typeof(StringifiedArrayConverter<PubgBlueZoneConfig>))]
+        public IEnumerable<PubgBlueZoneConfig> BlueZoneCustomOptions { get; set; }
 
         [JsonProperty]
         public PubgMap MapName { get; set; }
