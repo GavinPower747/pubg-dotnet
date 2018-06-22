@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Pubg.Net.Infrastructure.JsonConverters
 {
@@ -12,8 +13,8 @@ namespace Pubg.Net.Infrastructure.JsonConverters
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            string item = serializer.Deserialize<string>(reader);
-            return JsonConvert.DeserializeObject<IEnumerable<T>>(item);
+            JToken token = JToken.Load(reader);
+            return JsonConvert.DeserializeObject<IEnumerable<T>>(token.ToString());
         }
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) => throw new NotSupportedException();
