@@ -43,7 +43,7 @@ There are a number of ways to configure your api key. You can choose any of the 
 In order to configure your Api Key through our config class you just need to add the following code:
 
 **In Your Startup class**
-```C#
+```csharp
     PubgApiConfiguration.Configure(opt => 
     {
         opt.ApiKey = "myApiKey";
@@ -54,20 +54,21 @@ In order to configure your Api Key through our config class you just need to add
 
 When making a request to one of our services, all of our request objects contain an ApiKey field, simple provide your api key here. Below we use the GetMatchesRequest as an example
 
-```C#
-  var matchService = new PubgMatchService();
-  var request = new GetPubgMatchesRequest
+```csharp
+  var playerService = new PubgPlayerService();
+  var request = new GetPubgPlayersRequest
   {
-    ApiKey = "myApiKey"
+    ApiKey = "myApiKey",
+    PlayerNames = new string[] { "myplayername" }
   }
   
-  matchService.GetMatches(Region.(Region), request);
+  playerService.GetPlayers(PubgRegion.PCEurope, request);
 ```
 
 3. Service Instanciation
 
 When instanciating your service you can supply it with your api key
 
-```C#
+```csharp
     var matchService = new PubgMatchService("myApiKey");
 ```
