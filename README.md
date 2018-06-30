@@ -65,6 +65,14 @@ When making a request to one of our services, all of our request objects contain
   playerService.GetPlayers(PubgRegion.PCEurope, request);
 ```
 
+Or if the method doesn't need a request object the API key can be provided using an optional parameter at the end of each method call
+
+```csharp
+  var playerService = new PubgPlayerService();
+  
+  playerService.GetPlayer(PubgRegion.PCEurope, "myplayerid", apiKey: "MyApiKey");
+```
+
 3. Service Instanciation
 
 When instanciating your service you can supply it with your api key
