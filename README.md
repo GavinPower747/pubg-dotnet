@@ -52,7 +52,7 @@ In order to configure your Api Key through our config class you just need to add
 
 2. Per Request
 
-When making a request to one of our services, all of our request objects contain an ApiKey field, simple provide your api key here. Below we use the GetMatchesRequest as an example
+When making a request to one of our services, all of our request objects contain an ApiKey field, simply provide your api key here. Below we use the GetPubgPlayersRequest as an example
 
 ```csharp
   var playerService = new PubgPlayerService();
