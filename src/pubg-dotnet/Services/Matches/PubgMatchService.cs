@@ -18,7 +18,7 @@ namespace Pubg.Net
 
         public virtual PubgMatch GetMatch(PubgRegion region, string matchId, string apiKey = null)
         {
-            var url = string.Format(Api.Matches.MatchesEndpoint + "/{1}", region.Serialize(), matchId);
+            var url = Api.Matches.MatchesEndpoint(region, matchId);
             apiKey = string.IsNullOrEmpty(apiKey) ? ApiKey : apiKey;
 
             var matchJson = HttpRequestor.GetString(url, apiKey);
@@ -28,10 +28,10 @@ namespace Pubg.Net
 
         public async virtual Task<PubgMatch> GetMatchAsync(PubgRegion region, string matchId, string apiKey = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var url = string.Format(Api.Matches.MatchesEndpoint + "/{1}", region.Serialize(), matchId);
+            var url = Api.Matches.MatchesEndpoint(region, matchId);
             apiKey = string.IsNullOrEmpty(apiKey) ? ApiKey : apiKey;
 
-            var matchJson = await HttpRequestor.GetStringAsync(url, cancellationToken, apiKey);
+            var matchJson = await HttpRequestor.GetStringAsync(url, cancellationToken, apiKey).ConfigureAwait(false);
 
             return JsonConvert.DeserializeObject<IEnumerable<PubgMatch>>(matchJson, new JsonApiSerializerSettings()).FirstOrDefault();
         }
