@@ -17,7 +17,7 @@ namespace Pubg.Net
 
         public virtual IEnumerable<PubgSeason> GetSeasons(PubgRegion region, string apiKey = null)
         {
-            var url = string.Format(Api.Seasons.SeasonsEndpoint, region.Serialize());
+            var url = Api.Seasons.SeasonsEndpoint(region);
             apiKey = string.IsNullOrEmpty(apiKey) ? ApiKey : apiKey;
 
             var seasonJson = HttpRequestor.GetString(url, apiKey);
@@ -27,7 +27,7 @@ namespace Pubg.Net
 
         public async virtual Task<IEnumerable<PubgSeason>> GetSeasonsAsync(PubgRegion region, string apiKey = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var url = string.Format(Api.Seasons.SeasonsEndpoint, region.Serialize());
+            var url = Api.Seasons.SeasonsEndpoint(region);
             apiKey = string.IsNullOrEmpty(apiKey) ? ApiKey : apiKey;
 
             var seasonJson = await HttpRequestor.GetStringAsync(url, cancellationToken, apiKey);

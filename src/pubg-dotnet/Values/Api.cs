@@ -1,4 +1,6 @@
-﻿namespace Pubg.Net.Values
+﻿using Pubg.Net.Extensions;
+
+namespace Pubg.Net.Values
 {
     internal static class Api
     {
@@ -7,28 +9,30 @@
 
         internal static class Matches
         {
-            internal static string MatchesEndpoint = ShardedBaseUrl + "/matches";
+            internal static string MatchesEndpoint(PubgRegion region) => string.Format(ShardedBaseUrl + "/matches", region.Serialize());
+            internal static string MatchesEndpoint(PubgRegion region, string matchId) => MatchesEndpoint(region) + $"/{matchId}";
         }
 
         internal static class Status
         {
-            internal static string StatusEndpoint = PubgApiConfiguration.GetApiBase() + "/status";
+            internal static string StatusEndpoint() => PubgApiConfiguration.GetApiBase() + "/status";
         }
 
         internal static class Players
         {
-            internal static string PlayersEndpoint = ShardedBaseUrl + "/players";
-            internal static string PlayerSeasonsEndpoint = PlayersEndpoint + "/{1}/seasons/{2}";
+            internal static string PlayersEndpoint(PubgRegion region) => string.Format(ShardedBaseUrl + "/players", region.Serialize());
+            internal static string PlayersEndpoint(PubgRegion region, string playerId) => PlayersEndpoint(region) + $"/{playerId}";
+            internal static string PlayerSeasonsEndpoint(PubgRegion region, string playerId, string seasonId) => PlayersEndpoint(region) + $"/{playerId}/seasons/{seasonId}";
         }
 
         internal static class Samples
         {
-            internal static string SamplesEndpoint = ShardedBaseUrl + "/samples";
+            internal static string SamplesEndpoint(PubgRegion region) => string.Format(ShardedBaseUrl + "/samples", region.Serialize());
         }
 
         internal static class Seasons
         {
-            internal static string SeasonsEndpoint = ShardedBaseUrl + "/seasons";
+            internal static string SeasonsEndpoint(PubgRegion region) => string.Format(ShardedBaseUrl + "/seasons", region.Serialize());
         }
     }
 }

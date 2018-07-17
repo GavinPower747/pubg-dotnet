@@ -18,7 +18,7 @@ namespace Pubg.Net
 
         public virtual PubgMatch GetMatch(PubgRegion region, string matchId, string apiKey = null)
         {
-            var url = string.Format(Api.Matches.MatchesEndpoint + "/{1}", region.Serialize(), matchId);
+            var url = Api.Matches.MatchesEndpoint(region, matchId);
             apiKey = string.IsNullOrEmpty(apiKey) ? ApiKey : apiKey;
 
             var matchJson = HttpRequestor.GetString(url, apiKey);

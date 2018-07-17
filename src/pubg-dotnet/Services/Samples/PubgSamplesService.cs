@@ -21,7 +21,7 @@ namespace Pubg.Net
 
         public PubgMatchSample GetMatchSamples(PubgRegion region, GetSamplesRequest request)
         {
-            var url = RequestBuilder.BuildRequestUrl(string.Format(Api.Samples.SamplesEndpoint, region.Serialize()), request);
+            var url = RequestBuilder.BuildRequestUrl(Api.Samples.SamplesEndpoint(region), request);
             var apiKey = string.IsNullOrEmpty(request.ApiKey) ? ApiKey : request.ApiKey;
 
             var collectionJson = HttpRequestor.GetString(url, apiKey);
@@ -34,7 +34,7 @@ namespace Pubg.Net
 
         public async Task<PubgMatchSample> GetMatchSamplesAsync(PubgRegion region, GetSamplesRequest request, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var url = RequestBuilder.BuildRequestUrl(string.Format(Api.Samples.SamplesEndpoint, region.Serialize()), request);
+            var url = RequestBuilder.BuildRequestUrl(Api.Samples.SamplesEndpoint(region), request);
             var apiKey = string.IsNullOrEmpty(request.ApiKey) ? ApiKey : request.ApiKey;
 
             var collectionJson = await HttpRequestor.GetStringAsync(url, cancellationToken, apiKey);
