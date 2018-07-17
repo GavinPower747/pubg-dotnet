@@ -15,7 +15,7 @@ namespace Pubg.Net
 
         public virtual PubgStatus GetStatus(string apiKey = null)
         {
-            var url = Api.Status.StatusEndpoint;
+            var url = Api.Status.StatusEndpoint();
             apiKey = string.IsNullOrEmpty(apiKey) ? ApiKey : apiKey;
 
             var objectJson = HttpRequestor.GetString(url, apiKey);
@@ -25,10 +25,10 @@ namespace Pubg.Net
 
         public virtual async Task<PubgStatus> GetStatusAsync(string apiKey = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var url = Api.Status.StatusEndpoint;
+            var url = Api.Status.StatusEndpoint();
             apiKey = string.IsNullOrEmpty(apiKey) ? ApiKey : apiKey;
 
-            var objectJson = await HttpRequestor.GetStringAsync(url, cancellationToken, apiKey);
+            var objectJson = await HttpRequestor.GetStringAsync(url, cancellationToken, apiKey).ConfigureAwait(false);
 
             return JsonConvert.DeserializeObject<PubgStatus>(objectJson, new JsonApiSerializerSettings());
         }
