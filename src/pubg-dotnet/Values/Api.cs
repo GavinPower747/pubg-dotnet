@@ -30,5 +30,11 @@
         {
             internal static string SeasonsEndpoint = ShardedBaseUrl + "/seasons";
         }
+
+        internal static class Tournaments
+        {
+            internal static string TournamentsEndpoint() => PubgApiConfiguration.GetApiBase() + "/tournaments";
+            internal static string TournamentsEndpoint(string tournamentId) => TournamentsEndpoint() + $"/{tournamentId}";
+        }
     }
 }
