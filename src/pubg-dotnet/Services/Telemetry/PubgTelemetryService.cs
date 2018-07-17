@@ -19,11 +19,11 @@ namespace Pubg.Net
         }
 
         public virtual async Task<IEnumerable<PubgTelemetryEvent>> GetTelemetryAsync(PubgRegion region, PubgAsset asset, CancellationToken cancellationToken = default(CancellationToken)) 
-            => await GetTelemetryAsync(region, asset.Url, cancellationToken);
+            => await GetTelemetryAsync(region, asset.Url, cancellationToken).ConfigureAwait(false);
 
         public virtual async Task<IEnumerable<PubgTelemetryEvent>> GetTelemetryAsync(PubgRegion region, string url, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var collectionJson = await HttpRequestor.GetStringAsync(url, cancellationToken);
+            var collectionJson = await HttpRequestor.GetStringAsync(url, cancellationToken).ConfigureAwait(false);
 
             return JsonConvert.DeserializeObject<IEnumerable<PubgTelemetryEvent>>(collectionJson);
         }

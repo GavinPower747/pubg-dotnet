@@ -37,7 +37,7 @@ namespace Pubg.Net
             var url = RequestBuilder.BuildRequestUrl(Api.Samples.SamplesEndpoint(region), request);
             var apiKey = string.IsNullOrEmpty(request.ApiKey) ? ApiKey : request.ApiKey;
 
-            var collectionJson = await HttpRequestor.GetStringAsync(url, cancellationToken, apiKey);
+            var collectionJson = await HttpRequestor.GetStringAsync(url, cancellationToken, apiKey).ConfigureAwait(false);
 
             return JsonConvert.DeserializeObject<IEnumerable<PubgMatchSample>>(collectionJson, new JsonApiSerializerSettings()).FirstOrDefault();
         }

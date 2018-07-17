@@ -1,6 +1,5 @@
 ﻿using JsonApiSerializer;
 using Newtonsoft.Json;
-using Pubg.Net.Extensions;
 using Pubg.Net.Infrastructure;
 using Pubg.Net.Services;
 using Pubg.Net.Values;
@@ -30,7 +29,7 @@ namespace Pubg.Net
             var url = Api.Seasons.SeasonsEndpoint(region);
             apiKey = string.IsNullOrEmpty(apiKey) ? ApiKey : apiKey;
 
-            var seasonJson = await HttpRequestor.GetStringAsync(url, cancellationToken, apiKey);
+            var seasonJson = await HttpRequestor.GetStringAsync(url, cancellationToken, apiKey).ConfigureAwait(false);
 
             return JsonConvert.DeserializeObject<IEnumerable<PubgSeason>>(seasonJson, new JsonApiSerializerSettings());
         }

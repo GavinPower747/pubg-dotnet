@@ -1,6 +1,5 @@
 ﻿using JsonApiSerializer;
 using Newtonsoft.Json;
-using Pubg.Net.Extensions;
 using Pubg.Net.Infrastructure;
 using Pubg.Net.Services;
 using Pubg.Net.Values;
@@ -30,7 +29,7 @@ namespace Pubg.Net
             var url = Api.Players.PlayersEndpoint(region, playerId);
             apiKey = string.IsNullOrEmpty(apiKey) ? ApiKey : apiKey;
 
-            var playerJson = await HttpRequestor.GetStringAsync(url, cancellationToken, apiKey);
+            var playerJson = await HttpRequestor.GetStringAsync(url, cancellationToken, apiKey).ConfigureAwait(false);
 
             return JsonConvert.DeserializeObject<PubgPlayer>(playerJson, new JsonApiSerializerSettings());
         }
@@ -47,10 +46,10 @@ namespace Pubg.Net
 
         public virtual async Task<IEnumerable<PubgPlayer>> GetPlayersAsync(PubgRegion region, GetPubgPlayersRequest filter, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var url = RequestBuilder.BuildRequestUrl(Api.Players.PlayersEndpoint(region), filter)
+            var url = RequestBuilder.BuildRequestUrl(Api.Players.PlayersEndpoint(region), filter);
             var apiKey = string.IsNullOrEmpty(filter.ApiKey) ? ApiKey : filter.ApiKey;
 
-            var collectionJson = await HttpRequestor.GetStringAsync(url, cancellationToken, apiKey);
+            var collectionJson = await HttpRequestor.GetStringAsync(url, cancellationToken, apiKey).ConfigureAwait(false);
 
             return JsonConvert.DeserializeObject<IEnumerable<PubgPlayer>>(collectionJson, new JsonApiSerializerSettings());
         }
@@ -70,7 +69,7 @@ namespace Pubg.Net
             var url = Api.Players.PlayerSeasonsEndpoint(region, playerId, seasonId);
             apiKey = string.IsNullOrEmpty(apiKey) ? ApiKey : apiKey;
 
-            var seasonJson = await HttpRequestor.GetStringAsync(url, cancellationToken, apiKey);
+            var seasonJson = await HttpRequestor.GetStringAsync(url, cancellationToken, apiKey).ConfigureAwait(false);
 
             return JsonConvert.DeserializeObject<PubgPlayerSeason>(seasonJson, new JsonApiSerializerSettings());
         }
