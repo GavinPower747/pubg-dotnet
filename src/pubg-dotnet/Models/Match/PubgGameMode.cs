@@ -18,6 +18,10 @@ namespace Pubg.Net
         [EnumMember(Value = "duo")]
         Duo,
         [EnumMember(Value = "duo-fpp")]
-        DuoFPP
+        DuoFPP,
+        [EnumMember(Value = "warmodetpp")]
+        WarModeTPP,
+        [EnumMember(Value = "warmodefpp")]
+        WarModeFPP
     }
 }
