@@ -12,9 +12,6 @@ namespace Pubg.Net.Tests.Status
         public void Can_Retrieve_Status()
         {
             var status = new PubgStatusService(Storage.ApiKey).GetStatus();
-
-            status.Attributes.Should().NotBeNull();
-            status.Attributes.Version.Should().NotBeNullOrWhiteSpace();
             status.Id.Should().NotBeNullOrWhiteSpace();
         }
     }
