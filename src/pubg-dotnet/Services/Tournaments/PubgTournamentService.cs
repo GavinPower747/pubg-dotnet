@@ -29,7 +29,7 @@ namespace Pubg.Net
             var url = Api.Tournaments.TournamentsEndpoint();
             apiKey = string.IsNullOrEmpty(apiKey) ? ApiKey : apiKey;
 
-            var matchJson = await HttpRequestor.GetStringAsync(url, cancellationToken, apiKey);
+            var matchJson = await HttpRequestor.GetStringAsync(url, cancellationToken, apiKey).ConfigureAwait(false);
 
             return JsonConvert.DeserializeObject<IEnumerable<PubgTournament>>(matchJson, new JsonApiSerializerSettings());
         }
@@ -49,7 +49,7 @@ namespace Pubg.Net
             var url = Api.Tournaments.TournamentsEndpoint(tournamentId);
             apiKey = string.IsNullOrEmpty(apiKey) ? ApiKey : apiKey;
 
-            var matchJson = await HttpRequestor.GetStringAsync(url, cancellationToken, apiKey);
+            var matchJson = await HttpRequestor.GetStringAsync(url, cancellationToken, apiKey).ConfigureAwait(false);
 
             return JsonConvert.DeserializeObject<PubgTournament>(matchJson, new JsonApiSerializerSettings());
         }
