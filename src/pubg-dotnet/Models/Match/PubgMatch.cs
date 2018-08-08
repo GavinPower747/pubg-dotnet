@@ -25,7 +25,7 @@ namespace Pubg.Net
         public PubgMatchStats Stats { get; set; }
 
         [JsonProperty]
-        public PubgGameMode GameMode { get; set; }
+        public string GameMode { get; set; }
 
         [JsonProperty]
         public string PatchVersion { get; set; }
