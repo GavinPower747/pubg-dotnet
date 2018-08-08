@@ -22,6 +22,7 @@ namespace Pubg.Net.Tests.Matches
 
             match.ShardId.Should().Equals(region.Serialize());
             match.Rosters.Should().NotBeNull();
+            match.GameMode.Should().NotBeNullOrWhiteSpace();
 
             Assert.All(match.Rosters, r => r.Stats.Rank.Should().BeGreaterThan(0));
             match.Rosters.Should().ContainSingle(x => x.Won == true);
