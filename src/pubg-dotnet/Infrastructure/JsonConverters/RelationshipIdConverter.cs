@@ -12,12 +12,16 @@ namespace Pubg.Net.Infrastructure.JsonConverters
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            JObject jo = JObject.Load(reader);
-            var dataToken = jo.SelectToken("data");
+            if (reader.TokenType != JsonToken.StartObject)
+                return serializer.Deserialize(reader, objectType);
 
+            JToken jt = JToken.Load(reader);
+
+            var dataToken = jt.SelectToken("data");
+            
             if (objectType == typeof(string))
                 return dataToken["id"].ToString();
-
+            
             return dataToken.Select(x => (string)x["id"]).ToList();
         }
 
