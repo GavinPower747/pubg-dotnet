@@ -32,10 +32,7 @@ namespace Pubg.Net.UnitTests.JsonConverters
             public IEnumerable<string> AuthorIds { get; set; }
         }
 
-        [Fact]
-        public void RelationshipIdConverter_Converts_FromJsonApiFormat()
-        {
-            string jsonLiteral =
+        string jsonApiLiteral =
             @"{
                 ""data"": 
                 {
@@ -64,7 +61,10 @@ namespace Pubg.Net.UnitTests.JsonConverters
                 }
             }";
 
-            TestArticle testArticle = JsonConvert.DeserializeObject<TestArticle>(jsonLiteral, new JsonApiSerializerSettings());
+        [Fact]
+        public void RelationshipIdConverter_Converts_FromJsonApiFormat()
+        {
+            TestArticle testArticle = JsonConvert.DeserializeObject<TestArticle>(jsonApiLiteral, new JsonApiSerializerSettings());
 
             testArticle.Id.Should().Equals(1);
             testArticle.Title.Should().Equals("JSON API paints my bikeshed!");
@@ -73,6 +73,23 @@ namespace Pubg.Net.UnitTests.JsonConverters
             testArticle.Updated.Should().Equals(Convert.ToDateTime("2015-05-22T14:56:28.000Z"));
             testArticle.AuthorIds.Should().NotBeNullOrEmpty();
             testArticle.AuthorIds.Should().Contain(new [] { "42", "43", "44", "45" });
+        }
+
+        [Fact]
+        public void RelationshipIdConverter_Converts_FromJsonApiFormat_MultipleTimes()
+        {
+            TestArticle testArticle = JsonConvert.DeserializeObject<TestArticle>(jsonApiLiteral, new JsonApiSerializerSettings());
+
+            var reserializedArticle = JsonConvert.SerializeObject(testArticle);
+            var deserializedArticle = JsonConvert.DeserializeObject<TestArticle>(reserializedArticle);
+
+            deserializedArticle.Id.Should().Equals(1);
+            deserializedArticle.Title.Should().Equals("JSON API paints my bikeshed!");
+            deserializedArticle.Body.Should().Equals("The shortest article. Ever.");
+            deserializedArticle.Created.Should().Equals(Convert.ToDateTime("2015-05-22T14:56:29.000Z"));
+            deserializedArticle.Updated.Should().Equals(Convert.ToDateTime("2015-05-22T14:56:28.000Z"));
+            deserializedArticle.AuthorIds.Should().NotBeNullOrEmpty();
+            deserializedArticle.AuthorIds.Should().Contain(new[] { "42", "43", "44", "45" });
         }
 
         [Fact]
