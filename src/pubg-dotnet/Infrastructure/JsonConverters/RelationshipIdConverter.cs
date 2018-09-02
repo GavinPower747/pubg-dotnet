@@ -12,6 +12,8 @@ namespace Pubg.Net.Infrastructure.JsonConverters
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
+            //if the reader is not reading a relationship object just deserialize as normal.
+            //This allows us to serialize and deserialize multiple times after converting from the Json-API format
             if (reader.TokenType != JsonToken.StartObject)
                 return serializer.Deserialize(reader, objectType);
 
