@@ -8,6 +8,9 @@ namespace Pubg.Net.Models.Stats
         public int Assists { get; set; }
 
         [JsonProperty]
+        public float BestRankPoints { get; set; }
+
+        [JsonProperty]
         public int Boosts { get; set; }
 
         [JsonProperty]
@@ -15,6 +18,9 @@ namespace Pubg.Net.Models.Stats
 
         [JsonProperty]
         public int DailyKills { get; set; }
+
+        [JsonProperty]
+        public int DailyWins { get; set; }
 
         [JsonProperty]
         public float DamageDealt { get; set; }
@@ -50,6 +56,9 @@ namespace Pubg.Net.Models.Stats
         public float MostSurvivalTime { get; set; }
 
         [JsonProperty]
+        public float RankPoints { get; set; }
+
+        [JsonProperty]
         public int Revives { get; set; }
 
         [JsonProperty]
@@ -66,6 +75,9 @@ namespace Pubg.Net.Models.Stats
 
         [JsonProperty]
         public int Suicides { get; set; }
+
+        [JsonProperty]
+        public float SwimDistance { get; set; }
 
         [JsonProperty]
         public int TeamKills { get; set; }
@@ -87,6 +99,9 @@ namespace Pubg.Net.Models.Stats
 
         [JsonProperty]
         public int WeeklyKills { get; set; }
+
+        [JsonProperty]
+        public int WeeklyWins { get; set; }
 
         [JsonProperty]
         public float WinPoints { get; set; }

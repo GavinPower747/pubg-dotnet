@@ -57,6 +57,9 @@ namespace Pubg.Net
         public int MostDamage { get; set; }
 
         [JsonProperty]
+        public float RankPoints { get; set; }
+
+        [JsonProperty]
         public int Revives { get; set; }
 
         [JsonProperty]
