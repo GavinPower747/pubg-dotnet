@@ -60,7 +60,7 @@ namespace Pubg.Net.Tests.Players
         }
 
         [Fact]
-        public void Can_Get_Season_For_Player()
+        public void Can_Get_Season_For_Player_OnPC()
         {
             var playerService = new PubgPlayerService(Storage.ApiKey);
 
@@ -68,7 +68,31 @@ namespace Pubg.Net.Tests.Players
             var playerId = Storage.GetMatch(region).Rosters.SelectMany(r => r.Participants).Select(p => p.Stats.PlayerId).FirstOrDefault();
             var seasonId = Storage.GetSeason(region).Id;
 
-            var playerSeason = playerService.GetPlayerSeason(region, playerId, seasonId);
+            var playerSeason = playerService.GetPlayerSeasonPC(playerId, seasonId);
+
+            playerSeason.Should().NotBeNull();
+            playerSeason.GameModeStats.Should().NotBeNull();
+            playerSeason.SeasonId.Should().NotBeNullOrWhiteSpace();
+            playerSeason.PlayerId.Should().NotBeNullOrWhiteSpace();
+            playerSeason.GameModeStats.Should().NotBeNull();
+            playerSeason.GameModeStats.Solo.Should().NotBeNull();
+            playerSeason.GameModeStats.SoloFPP.Should().NotBeNull();
+            playerSeason.GameModeStats.Duo.Should().NotBeNull();
+            playerSeason.GameModeStats.DuoFPP.Should().NotBeNull();
+            playerSeason.GameModeStats.Squad.Should().NotBeNull();
+            playerSeason.GameModeStats.SquadFPP.Should().NotBeNull();
+        }
+
+        [Fact]
+        public void Can_Get_Season_For_Player_OnXbox()
+        {
+            var playerService = new PubgPlayerService(Storage.ApiKey);
+
+            var region = PubgRegion.PCEurope;
+            var playerId = Storage.GetMatch(region).Rosters.SelectMany(r => r.Participants).Select(p => p.Stats.PlayerId).FirstOrDefault();
+            var seasonId = Storage.GetSeason(region).Id;
+
+            var playerSeason = playerService.GetPlayerSeasonXbox(region, playerId, seasonId);
 
             playerSeason.Should().NotBeNull();
             playerSeason.GameModeStats.Should().NotBeNull();
