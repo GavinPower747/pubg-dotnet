@@ -11,6 +11,9 @@ namespace Pubg.Net
         [JsonProperty]
         public PubgSeasonStats GameModeStats { get; set; }
 
+        [JsonProperty]
+        public PubgSeasonStats LifetimeStats { get; set; }
+
         [JsonProperty("player")]
         [JsonConverter(typeof(RelationshipIdConverter))]
         public string PlayerId { get; set; }
