@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 
 namespace Pubg.Net
 {
-    [JsonConverter( typeof( DefaultValueStringEnumConverter ) )]
+    [JsonConverter(typeof(DefaultValueStringEnumConverter))]
     public enum PubgMap
     {
         //In some of the Telemetry they return an empty string
@@ -16,6 +16,8 @@ namespace Pubg.Net
         [EnumMember( Value = "Desert_Main" )]
         Miramar,
         [EnumMember(Value = "Savage_Main")]
-        Sanhok
+        Sanhok,
+        [EnumMember(Value = "Range_Main")]
+        TrainingRange
     }
 }

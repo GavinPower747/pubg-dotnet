@@ -9,10 +9,7 @@ namespace Pubg.Net
 {
     public class PubgTelemetryService : PubgService
     {
-        public virtual IEnumerable<PubgTelemetryEvent> GetTelemetry(PubgRegion region, PubgAsset asset)
-        {
-            return GetTelemetry(region, asset.Url);
-        }
+        public virtual IEnumerable<PubgTelemetryEvent> GetTelemetry(PubgRegion region, PubgAsset asset) => GetTelemetry(region, asset.Url);
 
         public virtual IEnumerable<PubgTelemetryEvent> GetTelemetry(PubgRegion region, string url)
         {
@@ -21,14 +18,12 @@ namespace Pubg.Net
             return JsonConvert.DeserializeObject<IEnumerable<PubgTelemetryEvent>>(collectionJson);
         }
 
-        public virtual async Task<IEnumerable<PubgTelemetryEvent>> GetTelemetryAsync(PubgRegion region, PubgAsset asset, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            return await GetTelemetryAsync(region, asset.Url, cancellationToken);
-        }
+        public virtual async Task<IEnumerable<PubgTelemetryEvent>> GetTelemetryAsync(PubgRegion region, PubgAsset asset, CancellationToken cancellationToken = default(CancellationToken)) 
+            => await GetTelemetryAsync(region, asset.Url, cancellationToken).ConfigureAwait(false);
 
         public virtual async Task<IEnumerable<PubgTelemetryEvent>> GetTelemetryAsync(PubgRegion region, string url, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var collectionJson = await HttpRequestor.GetStringAsync(url, cancellationToken);
+            var collectionJson = await HttpRequestor.GetStringAsync(url, cancellationToken).ConfigureAwait(false);
 
             return JsonConvert.DeserializeObject<IEnumerable<PubgTelemetryEvent>>(collectionJson);
         }

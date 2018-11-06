@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Description>Sync and Async client library for communicating with the Pubg Developer API supporting .net standard 2.0</Description>
     <AssemblyTitle>Pubg.Net</AssemblyTitle>
-    <Version>1.6.0</Version>
+    <Version>2.0.0</Version>
     <Authors>Gavin Power</Authors>
     <TargetFramework>netstandard2.0;net45</TargetFramework>
     <AssemblyName>Pubg.Net</AssemblyName>

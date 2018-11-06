@@ -1,6 +1,5 @@
 ﻿using JsonApiSerializer;
 using Newtonsoft.Json;
-using Pubg.Net.Extensions;
 using Pubg.Net.Infrastructure;
 using Pubg.Net.Services;
 using Pubg.Net.Values;
@@ -15,9 +14,18 @@ namespace Pubg.Net
         public PubgSeasonService() : base() { }
         public PubgSeasonService(string apiKey) : base(apiKey) { }
 
-        public virtual IEnumerable<PubgSeason> GetSeasons(PubgRegion region, string apiKey = null)
+        /// <summary>
+        ///  Get a list of seasons for the specified platform on the PC (default: Steam)
+        /// </summary>
+        /// <param name="platform">The platform you wish to get the seasons for</param>
+        /// <param name="apiKey">Your api key (optional)</param>
+        /// <returns>A list of seasons and their information</returns>
+        /// <exception cref="Pubg.Net.Exceptions.PubgException">Exception thrown on the API side, details included on object</exception>
+        /// <exception cref="Pubg.Net.Exceptions.PubgTooManyRequestsException">You have exceeded your rate limit</exception>
+        /// <exception cref="Pubg.Net.Exceptions.PubgUnauthorizedException">Invalid API Key</exception>
+        public virtual IEnumerable<PubgSeason> GetSeasonsPC(PubgPlatform platform = PubgPlatform.Steam, string apiKey = null)
         {
-            var url = string.Format(Api.Seasons.SeasonsEndpoint, region.Serialize());
+            var url = Api.Seasons.SeasonsPCEndpoint(platform);
             apiKey = string.IsNullOrEmpty(apiKey) ? ApiKey : apiKey;
 
             var seasonJson = HttpRequestor.GetString(url, apiKey);
@@ -25,12 +33,59 @@ namespace Pubg.Net
             return JsonConvert.DeserializeObject<IEnumerable<PubgSeason>>(seasonJson, new JsonApiSerializerSettings());
         }
 
-        public async virtual Task<IEnumerable<PubgSeason>> GetSeasonsAsync(PubgRegion region, string apiKey = null, CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        ///  Get a list of seasons for the specified platform on the PC (default: Steam)
+        /// </summary>
+        /// <param name="platform">The platform you wish to get the seasons for</param>
+        /// <param name="apiKey">Your api key (optional)</param>
+        /// <returns>A list of seasons and their information</returns>
+        /// <exception cref="Pubg.Net.Exceptions.PubgException">Exception thrown on the API side, details included on object</exception>
+        /// <exception cref="Pubg.Net.Exceptions.PubgTooManyRequestsException">You have exceeded your rate limit</exception>
+        /// <exception cref="Pubg.Net.Exceptions.PubgUnauthorizedException">Invalid API Key</exception>
+        public async virtual Task<IEnumerable<PubgSeason>> GetSeasonsPCAsync(PubgPlatform platform = PubgPlatform.Steam, string apiKey = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var url = string.Format(Api.Seasons.SeasonsEndpoint, region.Serialize());
+            var url = Api.Seasons.SeasonsPCEndpoint(platform);
             apiKey = string.IsNullOrEmpty(apiKey) ? ApiKey : apiKey;
 
-            var seasonJson = await HttpRequestor.GetStringAsync(url, cancellationToken, apiKey);
+            var seasonJson = await HttpRequestor.GetStringAsync(url, cancellationToken, apiKey).ConfigureAwait(false);
+
+            return JsonConvert.DeserializeObject<IEnumerable<PubgSeason>>(seasonJson, new JsonApiSerializerSettings());
+        }
+
+        /// <summary>
+        ///  Get a list of seasons for the specified region on Xbox
+        /// </summary>
+        /// <param name="platform">The platform you wish to get the seasons for</param>
+        /// <param name="apiKey">Your api key (optional)</param>
+        /// <returns>A list of seasons and their information</returns>
+        /// <exception cref="Pubg.Net.Exceptions.PubgException">Exception thrown on the API side, details included on object</exception>
+        /// <exception cref="Pubg.Net.Exceptions.PubgTooManyRequestsException">You have exceeded your rate limit</exception>
+        /// <exception cref="Pubg.Net.Exceptions.PubgUnauthorizedException">Invalid API Key</exception>
+        public virtual IEnumerable<PubgSeason> GetSeasonsXbox(PubgRegion region, string apiKey = null)
+        {
+            var url = Api.Seasons.SeasonsXboxEndpoint(region);
+            apiKey = string.IsNullOrEmpty(apiKey) ? ApiKey : apiKey;
+
+            var seasonJson = HttpRequestor.GetString(url, apiKey);
+
+            return JsonConvert.DeserializeObject<IEnumerable<PubgSeason>>(seasonJson, new JsonApiSerializerSettings());
+        }
+
+        /// <summary>
+        ///  Get a list of seasons for the specified region on Xbox
+        /// </summary>
+        /// <param name="platform">The platform you wish to get the seasons for</param>
+        /// <param name="apiKey">Your api key (optional)</param>
+        /// <returns>A list of seasons and their information</returns>
+        /// <exception cref="Pubg.Net.Exceptions.PubgException">Exception thrown on the API side, details included on object</exception>
+        /// <exception cref="Pubg.Net.Exceptions.PubgTooManyRequestsException">You have exceeded your rate limit</exception>
+        /// <exception cref="Pubg.Net.Exceptions.PubgUnauthorizedException">Invalid API Key</exception>
+        public async virtual Task<IEnumerable<PubgSeason>> GetSeasonsXboxAsync(PubgRegion region, string apiKey = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var url = Api.Seasons.SeasonsXboxEndpoint(region);
+            apiKey = string.IsNullOrEmpty(apiKey) ? ApiKey : apiKey;
+
+            var seasonJson = await HttpRequestor.GetStringAsync(url, cancellationToken, apiKey).ConfigureAwait(false);
 
             return JsonConvert.DeserializeObject<IEnumerable<PubgSeason>>(seasonJson, new JsonApiSerializerSettings());
         }

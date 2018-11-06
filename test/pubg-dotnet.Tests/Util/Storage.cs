@@ -1,4 +1,5 @@
-﻿using Pubg.Net;
+﻿using pubg.net.Tests.Extensions;
+using Pubg.Net;
 using Pubg.Net.Extensions;
 using Pubg.Net.Models.Base;
 using Pubg.Net.Models.Samples;
@@ -59,7 +60,12 @@ namespace Pubg.Net.Tests.Util
                 return match;
 
             var samples = GetSamples(region);
-            match = new PubgMatchService(ApiKey).GetMatch(region, samples.MatchIds.First());
+            var matchService = new PubgMatchService(ApiKey);
+
+            if (region.IsPC())
+                match = matchService.GetMatchPC(samples.MatchIds.First());
+            else if(region.IsXbox())
+                match = matchService.GetMatchXbox(region, samples.MatchIds.First());
 
             StoredItems.Add(match);
 
@@ -73,7 +79,13 @@ namespace Pubg.Net.Tests.Util
             if (season != null)
                 return season;
 
-            var seasons = new PubgSeasonService(ApiKey).GetSeasons(region).ToList();
+            var seasonService = new PubgSeasonService(ApiKey);
+            List<PubgSeason> seasons = new List<PubgSeason>();
+
+            if (region.IsPC())
+                seasons = seasonService.GetSeasonsPC().ToList();
+            else if (region.IsXbox())
+                seasons = seasonService.GetSeasonsXbox(region).ToList();
 
             seasons.ForEach(s => StoredItems.Add(s));
 

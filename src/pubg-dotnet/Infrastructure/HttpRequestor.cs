@@ -31,8 +31,8 @@ namespace Pubg.Net.Infrastructure
         {
             var request = BuildRequest(url, apiToken);
 
-            var response = HttpClient.SendAsync(request).Result;
-            var responseContent = response.Content.ReadAsStringAsync().Result;
+            var response = HttpClient.SendAsync(request).ConfigureAwait(false).GetAwaiter().GetResult();
+            var responseContent = response.Content.ReadAsStringAsync().ConfigureAwait(false).GetAwaiter().GetResult();
 
             return HandleResponse(response, responseContent);
         }
@@ -41,8 +41,8 @@ namespace Pubg.Net.Infrastructure
         {
             var request = BuildRequest(url, apiToken);
 
-            var response = await HttpClient.SendAsync(request, cancellationToken);
-            var responseContent = await response.Content.ReadAsStringAsync();
+            var response = await HttpClient.SendAsync(request, cancellationToken).ConfigureAwait(false);
+            var responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
             return HandleResponse(response, responseContent);
         }
