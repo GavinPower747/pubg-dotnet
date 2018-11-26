@@ -36,16 +36,19 @@ namespace Pubg.Net.Tests.Util
             return samples;
         }
 
-        public static PubgPlayer GetPlayer(PubgRegion region)
+        public static PubgPlayer GetPlayer(PubgPlatform platform)
         {
-            var player = StoredItems.OfType<PubgPlayer>().FirstOrDefault(p => p.ShardId == region.Serialize());
+            var player = StoredItems.OfType<PubgPlayer>().FirstOrDefault(p => p.ShardId == platform.Serialize());
 
             if (player != null)
                 return player;
             
             var playerService = new PubgPlayerService(ApiKey);
+
+            var region = platform == PubgPlatform.Xbox ? PubgRegion.XboxEurope : PubgRegion.PCEurope;
+
             var playerNames = GetMatch(region).Rosters.SelectMany(r => r.Participants).Select(p => p.Stats.Name).Take(5);
-            var players = playerService.GetPlayers(region, new GetPubgPlayersRequest { PlayerNames = playerNames.ToArray() });
+            var players = playerService.GetPlayers(platform, new GetPubgPlayersRequest { PlayerNames = playerNames.ToArray() });
 
             StoredItems.AddRange(players);
 

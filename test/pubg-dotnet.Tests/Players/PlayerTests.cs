@@ -21,7 +21,7 @@ namespace Pubg.Net.Tests.Players
                 PlayerNames = playerNames
             };
 
-            var players = playerService.GetPlayers(PubgRegion.PCEurope, filter);
+            var players = playerService.GetPlayers(PubgPlatform.Steam, filter);
 
             Assert.NotEmpty(players);
             Assert.All(players.Select(p => p.Name), name => playerNames.Contains(name));
@@ -39,7 +39,7 @@ namespace Pubg.Net.Tests.Players
                 PlayerIds = playerIds
             };
 
-            var players = playerService.GetPlayers(PubgRegion.PCEurope, filter);
+            var players = playerService.GetPlayers(PubgPlatform.Steam, filter);
 
             Assert.NotEmpty(players);
             Assert.All(players.Select(p => p.Id), id => playerIds.Contains(id));
@@ -52,7 +52,7 @@ namespace Pubg.Net.Tests.Players
 
             var playerId = Storage.GetMatch(PubgRegion.PCEurope).Rosters.SelectMany(r => r.Participants).Select(p => p.Stats.PlayerId).FirstOrDefault();
 
-            var player = playerService.GetPlayer(PubgRegion.PCEurope, playerId);
+            var player = playerService.GetPlayer(PubgPlatform.Steam, playerId);
 
             player.Id.Should().NotBeNull();
             player.MatchIds.Should().NotBeNullOrEmpty();
@@ -117,7 +117,7 @@ namespace Pubg.Net.Tests.Players
                 PlayerNames = new string[] { "NonExistantPlayerHopefully" }
             };
 
-            Assert.Throws<PubgNotFoundException>(() => playerService.GetPlayers(PubgRegion.PCEurope, filter));
+            Assert.Throws<PubgNotFoundException>(() => playerService.GetPlayers(PubgPlatform.Steam, filter));
         }
     }
 }

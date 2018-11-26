@@ -22,10 +22,9 @@ namespace Pubg.Net.Values
 
         internal static class Players
         {
-            internal static string PlayersEndpoint(PubgRegion region) => string.Format(ShardedBaseUrl + "/players", region.Serialize());
-            internal static string PlayersEndpoint(PubgRegion region, string playerId) => PlayersEndpoint(region) + $"/{playerId}";
-            internal static string PlayerSeasonsPCEndpoint(PubgPlatform platform, string playerId, string seasonId) => string.Format(ShardedBaseUrl + "/players/{1}/seasons/{2}", platform.Serialize(), playerId, seasonId);
-            internal static string PlayerSeasonsXboxEndpoint(PubgRegion region, string playerId, string seasonId) => PlayersEndpoint(region) + $"/{playerId}/seasons/{seasonId}";
+            internal static string PlayersEndpoint(PubgPlatform platform) => string.Format(ShardedBaseUrl + "/players", platform.Serialize());
+            internal static string PlayersEndpoint(PubgPlatform platform, string playerId) => PlayersEndpoint(platform) + $"/{playerId}";
+            internal static string PlayerSeasonsEndpoint(PubgPlatform platform, string playerId, string seasonId) => string.Format(ShardedBaseUrl + "/players/{1}/seasons/{2}", platform.Serialize(), playerId, seasonId);
         }
 
         internal static class Samples
