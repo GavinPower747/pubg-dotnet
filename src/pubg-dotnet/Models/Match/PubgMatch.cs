@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Pubg.Net.Models.Base;
+using System;
 using System.Collections.Generic;
 
 namespace Pubg.Net
@@ -10,7 +11,7 @@ namespace Pubg.Net
         public string CreatedAt { get; set; }
 
         [JsonProperty]
-        public int Duration { get; set; }
+        public Int64 Duration { get; set; }
 
         [JsonProperty]
         public IEnumerable<PubgRoster> Rosters { get; set; }
