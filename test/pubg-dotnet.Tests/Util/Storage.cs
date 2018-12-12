@@ -77,7 +77,12 @@ namespace Pubg.Net.Tests.Util
 
         public static PubgSeason GetSeason(PubgRegion region)
         {
-            var season = StoredItems.OfType<PubgSeason>().FirstOrDefault();
+            PubgSeason season = null;
+
+            if(region.IsXbox())
+                season = StoredItems.OfType<PubgSeason>().FirstOrDefault(p => p.Id.ToLowerInvariant().Contains("xb"));
+            else if(region.IsPC())
+                season = StoredItems.OfType<PubgSeason>().FirstOrDefault(p => !p.Id.ToLowerInvariant().Contains("xb"));
 
             if (season != null)
                 return season;
