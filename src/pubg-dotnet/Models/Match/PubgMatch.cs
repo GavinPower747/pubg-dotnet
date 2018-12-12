@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Pubg.Net.Models.Base;
+using Pubg.Net.Models.Seasons;
 using System;
 using System.Collections.Generic;
 
@@ -42,5 +43,8 @@ namespace Pubg.Net
 
         [JsonProperty]
         public bool IsCustomMatch { get; set; }
+
+        [JsonProperty]
+        public PubgSeasonState SeasonState { get; set; }
     }
 }

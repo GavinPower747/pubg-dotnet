@@ -22,9 +22,17 @@ namespace Pubg.Net
         Duo,
         [EnumMember(Value = "duo-fpp")]
         DuoFPP,
-        [EnumMember(Value = "warmodetpp")]
-        WarModeTPP,
-        [EnumMember(Value = "warmodefpp")]
-        WarModeFPP
+        [EnumMember(Value = "normal-duo")]
+        NormalDuo,
+        [EnumMember(Value = "normal-duo-fpp")]
+        NormalDuoFPP,
+        [EnumMember(Value = "normal-solo")]
+        NormalSolo,
+        [EnumMember(Value = "normal-solo-fpp")]
+        NormalSoloFPP,
+        [EnumMember(Value = "normal-squad")]
+        NormalSquad,
+        [EnumMember(Value = "normal-squad-fpp")]
+        NormalSquadFPP
     }
 }
