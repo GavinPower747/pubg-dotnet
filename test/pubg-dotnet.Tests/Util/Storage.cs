@@ -92,7 +92,7 @@ namespace Pubg.Net.Tests.Util
 
             seasons.ForEach(s => StoredItems.Add(s));
 
-            return seasons.FirstOrDefault();
+            return seasons.LastOrDefault();
         }
     }
 }

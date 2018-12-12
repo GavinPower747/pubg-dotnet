@@ -11,7 +11,7 @@ namespace Pubg.Net
         public string CreatedAt { get; set; }
 
         [JsonProperty]
-        public Int64 Duration { get; set; }
+        public long Duration { get; set; }
 
         [JsonProperty]
         public IEnumerable<PubgRoster> Rosters { get; set; }
@@ -26,7 +26,7 @@ namespace Pubg.Net
         public PubgMatchStats Stats { get; set; }
 
         [JsonProperty]
-        public string GameMode { get; set; }
+        public PubgGameMode GameMode { get; set; }
 
         [JsonProperty]
         public string PatchVersion { get; set; }
