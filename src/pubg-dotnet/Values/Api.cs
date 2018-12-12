@@ -7,6 +7,12 @@ namespace Pubg.Net.Values
         internal const string DefaultBaseUrl = "https://api.pubg.com";
         internal static string ShardedBaseUrl = PubgApiConfiguration.GetApiBase() + "/shards/{0}";
 
+        internal static class Leaderboard
+        {
+            internal static string LeaderboardEndpoint(PubgPlatform platform, PubgGameMode gameMode) 
+                => string.Format(ShardedBaseUrl + "/leaderboards/{1}", platform.Serialize(), gameMode.Serialize());
+        }
+
         internal static class Matches
         {
             internal static string MatchesPCEndpoint(PubgPlatform platform) => string.Format(ShardedBaseUrl + "/matches", platform.Serialize());

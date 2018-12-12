@@ -11,6 +11,8 @@ namespace Pubg.Net
         Steam,
         [EnumMember(Value = "xbox")]
         Xbox,
+        [EnumMember(Value = "psn")]
+        PlayStation,
         [EnumMember(Value = "kakao")]
         Kakao
     }
