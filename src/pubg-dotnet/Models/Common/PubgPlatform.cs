@@ -9,6 +9,10 @@ namespace Pubg.Net
     {
         [EnumMember(Value = "steam")]
         Steam,
+        [EnumMember(Value = "xbox")]
+        Xbox,
+        [EnumMember(Value = "psn")]
+        PlayStation,
         [EnumMember(Value = "kakao")]
         Kakao
     }

@@ -15,6 +15,9 @@ namespace Pubg.Net
         public PubgAttackType AttackType { get; set; }
 
         [JsonProperty]
+        public int FireWeaponStackCount { get; set; }
+
+        [JsonProperty]
         public PubgItem Weapon { get; set; }
 
         [JsonProperty]

@@ -7,6 +7,12 @@ namespace Pubg.Net.Values
         internal const string DefaultBaseUrl = "https://api.pubg.com";
         internal static string ShardedBaseUrl = PubgApiConfiguration.GetApiBase() + "/shards/{0}";
 
+        internal static class Leaderboard
+        {
+            internal static string LeaderboardEndpoint(PubgPlatform platform, PubgGameMode gameMode) 
+                => string.Format(ShardedBaseUrl + "/leaderboards/{1}", platform.Serialize(), gameMode.Serialize());
+        }
+
         internal static class Matches
         {
             internal static string MatchesPCEndpoint(PubgPlatform platform) => string.Format(ShardedBaseUrl + "/matches", platform.Serialize());
@@ -22,10 +28,9 @@ namespace Pubg.Net.Values
 
         internal static class Players
         {
-            internal static string PlayersEndpoint(PubgRegion region) => string.Format(ShardedBaseUrl + "/players", region.Serialize());
-            internal static string PlayersEndpoint(PubgRegion region, string playerId) => PlayersEndpoint(region) + $"/{playerId}";
-            internal static string PlayerSeasonsPCEndpoint(PubgPlatform platform, string playerId, string seasonId) => string.Format(ShardedBaseUrl + "/players/{1}/seasons/{2}", platform.Serialize(), playerId, seasonId);
-            internal static string PlayerSeasonsXboxEndpoint(PubgRegion region, string playerId, string seasonId) => PlayersEndpoint(region) + $"/{playerId}/seasons/{seasonId}";
+            internal static string PlayersEndpoint(PubgPlatform platform) => string.Format(ShardedBaseUrl + "/players", platform.Serialize());
+            internal static string PlayersEndpoint(PubgPlatform platform, string playerId) => PlayersEndpoint(platform) + $"/{playerId}";
+            internal static string PlayerSeasonsEndpoint(PubgPlatform platform, string playerId, string seasonId) => string.Format(ShardedBaseUrl + "/players/{1}/seasons/{2}", platform.Serialize(), playerId, seasonId);
         }
 
         internal static class Samples
