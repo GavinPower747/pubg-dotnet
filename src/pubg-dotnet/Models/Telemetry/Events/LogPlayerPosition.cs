@@ -12,5 +12,8 @@ namespace Pubg.Net
 
         [JsonProperty]
         public int NumAlivePlayers { get; set; }
+
+        [JsonProperty]
+        public PubgVehicle Vehicle { get; set; }
     }
 }
