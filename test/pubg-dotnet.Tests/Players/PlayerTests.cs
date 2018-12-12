@@ -83,12 +83,12 @@ namespace Pubg.Net.Tests.Players
             playerSeason.GameModeStats.SquadFPP.Should().NotBeNull();
         }
 
-        [Fact]
+        //[Fact]
         public void Can_Get_Season_For_Player_OnXbox()
         {
             var playerService = new PubgPlayerService(Storage.ApiKey);
 
-            var region = PubgRegion.PCEurope;
+            var region = PubgRegion.XboxEurope;
             var playerId = Storage.GetMatch(region).Rosters.SelectMany(r => r.Participants).Select(p => p.Stats.PlayerId).FirstOrDefault();
             var seasonId = Storage.GetSeason(region).Id;
 
@@ -106,7 +106,7 @@ namespace Pubg.Net.Tests.Players
             playerSeason.GameModeStats.Squad.Should().NotBeNull();
             playerSeason.GameModeStats.SquadFPP.Should().NotBeNull();
         }
-
+        
         [Fact]
         public void GetPlayers_Throws_Exception_When_NotFound()
         {
