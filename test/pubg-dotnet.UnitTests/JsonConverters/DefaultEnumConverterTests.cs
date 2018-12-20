@@ -57,7 +57,7 @@ namespace Pubg.Net.UnitTests.JsonConverters
             var valueJson = jsonApiLiteral.Replace("%%ENUM_VALUE%%", "");
             var obj = JsonConvert.DeserializeObject<TestArticle>(valueJson);
             
-            obj.TestEnum.Should().Equals(value);
+            obj.TestEnum.Should().Equals(TestEnum.Default);
         }
         
         [Fact]
@@ -66,7 +66,7 @@ namespace Pubg.Net.UnitTests.JsonConverters
             var valueJson = jsonApiLiteral.Replace("%%ENUM_VALUE%%", "RandomValue");
             var obj = JsonConvert.DeserializeObject<TestArticle>(valueJson);
             
-            obj.TestEnum.Should().Equals(value);  
+            obj.TestEnum.Should().Equals(TestEnum.Default);  
         }
     }
 }
