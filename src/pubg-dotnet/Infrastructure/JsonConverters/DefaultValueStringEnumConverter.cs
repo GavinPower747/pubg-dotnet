@@ -14,7 +14,7 @@ namespace Pubg.Net.Infrastructure.JsonConverters
             
             try
             {
-                convertedObject = (Enum) base.ReadJson(reader, objectType, existingValue, serializer);
+                convertedObject = base.ReadJson(reader, objectType, existingValue, serializer) as Enum;
             }
             catch
             {
