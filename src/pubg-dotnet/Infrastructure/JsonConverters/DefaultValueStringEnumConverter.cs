@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -14,9 +14,9 @@ namespace Pubg.Net.Infrastructure.JsonConverters
             
             try
             {
-                convertedObject = base.ReadJson(reader, objectType, existingValue, serializer);
+                convertedObject = (Enum) base.ReadJson(reader, objectType, existingValue, serializer);
             }
-            catch(Exception ex)
+            catch
             {
                 var defaultMember = objectType.GetMembers().FirstOrDefault(f => f.GetCustomAttributes(typeof(DefaultEnumMemberAttribute), false).Count() > 0);
                 convertedObject = Enum.Parse(objectType, defaultMember.Name);
