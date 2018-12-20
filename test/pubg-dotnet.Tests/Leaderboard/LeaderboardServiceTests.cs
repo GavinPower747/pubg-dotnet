@@ -24,7 +24,6 @@ namespace pubg.net.Tests.Leaderboard
 
             leaderboard.Id.Should().NotBeNullOrEmpty();
             leaderboard.ShardId.Should().NotBeNullOrEmpty();
-            leaderboard.Players.Should().HaveCount(100);
             Assert.All(leaderboard.Players, player => player.Id.Should().NotBeNullOrEmpty());
             Assert.All(leaderboard.Players, player => player.Name.Should().NotBeNullOrEmpty());
         }
