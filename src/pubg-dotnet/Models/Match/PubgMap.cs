@@ -18,6 +18,8 @@ namespace Pubg.Net
         [EnumMember(Value = "Savage_Main")]
         Sanhok,
         [EnumMember(Value = "Range_Main")]
-        TrainingRange
+        TrainingRange,
+        [EnumMember(Value = "DihorOtok_Main")]
+        Vikendi
     }
 }
