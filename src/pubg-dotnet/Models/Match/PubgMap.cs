@@ -17,8 +17,6 @@ namespace Pubg.Net
         Miramar,
         [EnumMember(Value = "Savage_Main")]
         Sanhok,
-        [EnumMember(Value = "DihorOtok_Main")]
-        Vikendi,
         [EnumMember(Value = "Range_Main")]
         TrainingRange
     }
