@@ -1,6 +1,7 @@
 using FluentAssertions;
 using JsonApiSerializer;
 using Newtonsoft.Json;
+using Pubg.Net.Infrastructure.Attributes;
 using Pubg.Net.Infrastructure.JsonConverters;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using Xunit;
 
 namespace Pubg.Net.UnitTests.JsonConverters
 {
-    public class RelationshipIdConverterTests
+    public class DefaultEnumConverterTests
     {
         public class TestArticle
         {
