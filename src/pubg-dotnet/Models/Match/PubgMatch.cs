@@ -1,5 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Pubg.Net.Models.Base;
+using Pubg.Net.Models.Seasons;
+using System;
 using System.Collections.Generic;
 
 namespace Pubg.Net
@@ -10,7 +12,7 @@ namespace Pubg.Net
         public string CreatedAt { get; set; }
 
         [JsonProperty]
-        public int Duration { get; set; }
+        public long Duration { get; set; }
 
         [JsonProperty]
         public IEnumerable<PubgRoster> Rosters { get; set; }
@@ -25,7 +27,7 @@ namespace Pubg.Net
         public PubgMatchStats Stats { get; set; }
 
         [JsonProperty]
-        public string GameMode { get; set; }
+        public PubgGameMode GameMode { get; set; }
 
         [JsonProperty]
         public string PatchVersion { get; set; }
@@ -41,5 +43,8 @@ namespace Pubg.Net
 
         [JsonProperty]
         public bool IsCustomMatch { get; set; }
+
+        [JsonProperty]
+        public PubgSeasonState SeasonState { get; set; }
     }
 }

@@ -59,6 +59,9 @@ namespace Pubg.Net.Models.Stats
         public float RankPoints { get; set; }
 
         [JsonProperty]
+        public PubgRankPointsTitle RankPointsTitle { get; set; }
+
+        [JsonProperty]
         public int Revives { get; set; }
 
         [JsonProperty]
