@@ -44,7 +44,7 @@ namespace Pubg.Net.UnitTests.JsonConverters
         public void DefaultValueStringEnumConverter_Can_ConvertToValue()
         {
             var value = TestEnum.NonDefault;
-            var valueJson = jsonApiLiteral.Replace("%%ENUM_VALUE%%", value.ToString())
+            var valueJson = jsonApiLiteral.Replace("%%ENUM_VALUE%%", value.ToString());
             var obj = JsonConvert.DeserializeObject<TestArticle>(valueJson);
             
             obj.TestEnum.Should().Equals(value);
@@ -53,16 +53,16 @@ namespace Pubg.Net.UnitTests.JsonConverters
         [Fact]
         public void DefaultValueStringEnumConverter_Can_ConvertFromEmptyString()
         {
-            var valueJson = jsonApiLiteral.Replace("%%ENUM_VALUE%%", "")
+            var valueJson = jsonApiLiteral.Replace("%%ENUM_VALUE%%", "");
             var obj = JsonConvert.DeserializeObject<TestArticle>(valueJson);
             
             obj.TestEnum.Should().Equals(value);
         }
         
         [Fact]
-        DefaultValueStringEnumConverter_Can_ConvertFromUnknownValue()
+        public void DefaultValueStringEnumConverter_Can_ConvertFromUnknownValue()
         {
-            var valueJson = jsonApiLiteral.Replace("%%ENUM_VALUE%%", "RandomValue")
+            var valueJson = jsonApiLiteral.Replace("%%ENUM_VALUE%%", "RandomValue");
             var obj = JsonConvert.DeserializeObject<TestArticle>(valueJson);
             
             obj.TestEnum.Should().Equals(value);  
