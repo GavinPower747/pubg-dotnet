@@ -9,7 +9,7 @@ using pubg.net.Tests;
 
 namespace Pubg.Net.Tests.Matches
 {
-    public class MatchTests
+    public class MatchTests : TestBase
     {
         [Fact]
         public void Can_Retrieve_Match_ForPC()
@@ -20,7 +20,7 @@ namespace Pubg.Net.Tests.Matches
             var match = matchService.GetMatchPC(samples.MatchIds.FirstOrDefault());
 
             match.Rosters.Should().NotBeNull();
-            match.GameMode.Should().NotBeNullOrWhiteSpace();
+            match.GameMode.Should().NotBe(PubgGameMode.Unknown);
 
             Assert.All(match.Rosters, r => r.Stats.Rank.Should().BeGreaterThan(0));
             match.Rosters.Should().ContainSingle(x => x.Won == true);

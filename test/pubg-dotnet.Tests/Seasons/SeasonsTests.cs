@@ -23,7 +23,7 @@ namespace pubg.net.Tests.Seasons
         {
             var seasonsService = new PubgSeasonService(Storage.ApiKey);
 
-            var seasons = seasonsService.GetSeasonsXbox(PubgRegion.PCEurope);
+            var seasons = seasonsService.GetSeasonsXbox(PubgRegion.XboxEurope);
 
             Assert.All(seasons, s => s.Id.Should().NotBeNull());
             seasons.Should().ContainSingle(s => s.IsCurrentSeason == true);

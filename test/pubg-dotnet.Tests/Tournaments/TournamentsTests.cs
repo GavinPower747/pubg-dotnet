@@ -34,7 +34,6 @@ namespace pubg.net.Tests.Tournaments
             retrievedTournament.Should().NotBeNull();
             retrievedTournament.Id.Should().NotBeNullOrWhiteSpace();
             retrievedTournament.Type.Should().NotBeNullOrWhiteSpace();
-            retrievedTournament.MatchIds.Should().NotBeEmpty();
         }
     }
 }

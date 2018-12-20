@@ -20,6 +20,9 @@ namespace Pubg.Net
          [EnumMember(Value = "xbox-oc")]
          XboxOceania,
 
+         [EnumMember(Value = "xbox-sa")]
+         XboxSouthAmerica,
+
          //PC Regions
          [EnumMember(Value = "pc-as")]
          PCAsia,
