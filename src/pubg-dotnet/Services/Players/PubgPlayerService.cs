@@ -56,24 +56,24 @@ namespace Pubg.Net
             return JsonConvert.DeserializeObject<IEnumerable<PubgPlayer>>(collectionJson, new JsonApiSerializerSettings());
         }
 
-        public virtual PubgPlayerSeason GetPlayerLifetimeStats(PubgPlatform platform, string playerId, string apiKey = null)
+        public virtual PubgStatEntity GetPlayerLifetimeStats(PubgPlatform platform, string playerId, string apiKey = null)
         {
             var url = Api.Players.PlayerSeasonsEndpoint(platform, playerId, LIFETIME_SEASON_NAME);
             apiKey = string.IsNullOrEmpty(apiKey) ? ApiKey : apiKey;
 
             var seasonJson = HttpRequestor.GetString(url, apiKey);
 
-            return JsonConvert.DeserializeObject<PubgPlayerSeason>(seasonJson, new JsonApiSerializerSettings());
+            return JsonConvert.DeserializeObject<PubgStatEntity>(seasonJson, new JsonApiSerializerSettings());
         }
 
-        public virtual async Task<PubgPlayerSeason> GetPlayerLifetimeStatsAsync(PubgPlatform platform, string playerId, string apiKey = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<PubgStatEntity> GetPlayerLifetimeStatsAsync(PubgPlatform platform, string playerId, string apiKey = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             var url = Api.Players.PlayerSeasonsEndpoint(platform, playerId, LIFETIME_SEASON_NAME);
             apiKey = string.IsNullOrEmpty(apiKey) ? ApiKey : apiKey;
 
             var seasonJson = await HttpRequestor.GetStringAsync(url, cancellationToken, apiKey).ConfigureAwait(false);
 
-            return JsonConvert.DeserializeObject<PubgPlayerSeason>(seasonJson, new JsonApiSerializerSettings());
+            return JsonConvert.DeserializeObject<PubgStatEntity>(seasonJson, new JsonApiSerializerSettings());
         }
 
         /// <summary>
