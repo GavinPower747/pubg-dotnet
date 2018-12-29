@@ -84,6 +84,19 @@ namespace Pubg.Net.Tests.Players
         }
 
         [Fact]
+        public void Can_Get_LifetimeStats_For_Player_OnPC()
+        {
+            var playerService = new PubgPlayerService(Storage.ApiKey);
+
+            var region = PubgRegion.PCEurope;
+            var playerId = Storage.GetMatch(region).Rosters.SelectMany(r => r.Participants).Select(p => p.Stats.PlayerId).FirstOrDefault();
+
+            var lifeTimeStats = playerService.GetPlayerLifetimeStats(PubgPlatform.Steam, playerId);
+
+            lifeTimeStats.PlayerId.Should().BeEquivalentTo(playerId);
+            lifeTimeStats.GameModeStats.Should().NotBeNull();
+        }
+
         public void Can_Get_Season_For_Player_OnXbox()
         {
             var playerService = new PubgPlayerService(Storage.ApiKey);
