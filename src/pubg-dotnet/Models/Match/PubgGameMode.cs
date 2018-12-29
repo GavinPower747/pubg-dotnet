@@ -1,12 +1,15 @@
 ﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
+using Pubg.Net.Infrastructure.Attributes;
+using Pubg.Net.Infrastructure.JsonConverters;
 using System.Runtime.Serialization;
 
 namespace Pubg.Net
 {
-    [JsonConverter(typeof(StringEnumConverter))]
+    [JsonConverter(typeof(DefaultValueStringEnumConverter))]
     public enum PubgGameMode
     {
+        [DefaultEnumMember]
+        Unknown,
         [EnumMember(Value = "squad")]
         Squad,
         [EnumMember(Value = "squad-fpp")]
@@ -19,9 +22,17 @@ namespace Pubg.Net
         Duo,
         [EnumMember(Value = "duo-fpp")]
         DuoFPP,
-        [EnumMember(Value = "warmodetpp")]
-        WarModeTPP,
-        [EnumMember(Value = "warmodefpp")]
-        WarModeFPP
+        [EnumMember(Value = "normal-duo")]
+        NormalDuo,
+        [EnumMember(Value = "normal-duo-fpp")]
+        NormalDuoFPP,
+        [EnumMember(Value = "normal-solo")]
+        NormalSolo,
+        [EnumMember(Value = "normal-solo-fpp")]
+        NormalSoloFPP,
+        [EnumMember(Value = "normal-squad")]
+        NormalSquad,
+        [EnumMember(Value = "normal-squad-fpp")]
+        NormalSquadFPP
     }
 }

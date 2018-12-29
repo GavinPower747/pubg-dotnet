@@ -21,7 +21,7 @@ namespace Pubg.Net.Tests.Players
                 PlayerNames = playerNames
             };
 
-            var players = playerService.GetPlayers(PubgRegion.PCEurope, filter);
+            var players = playerService.GetPlayers(PubgPlatform.Steam, filter);
 
             Assert.NotEmpty(players);
             Assert.All(players.Select(p => p.Name), name => playerNames.Contains(name));
@@ -39,7 +39,7 @@ namespace Pubg.Net.Tests.Players
                 PlayerIds = playerIds
             };
 
-            var players = playerService.GetPlayers(PubgRegion.PCEurope, filter);
+            var players = playerService.GetPlayers(PubgPlatform.Steam, filter);
 
             Assert.NotEmpty(players);
             Assert.All(players.Select(p => p.Id), id => playerIds.Contains(id));
@@ -52,7 +52,7 @@ namespace Pubg.Net.Tests.Players
 
             var playerId = Storage.GetMatch(PubgRegion.PCEurope).Rosters.SelectMany(r => r.Participants).Select(p => p.Stats.PlayerId).FirstOrDefault();
 
-            var player = playerService.GetPlayer(PubgRegion.PCEurope, playerId);
+            var player = playerService.GetPlayer(PubgPlatform.Steam, playerId);
 
             player.Id.Should().NotBeNull();
             player.MatchIds.Should().NotBeNullOrEmpty();
@@ -83,7 +83,7 @@ namespace Pubg.Net.Tests.Players
             playerSeason.GameModeStats.SquadFPP.Should().NotBeNull();
         }
 
-        [Fact]
+        //[Fact]
         public void Can_Get_LifetimeStats_For_Player_OnPC()
         {
             var playerService = new PubgPlayerService(Storage.ApiKey);
@@ -101,7 +101,7 @@ namespace Pubg.Net.Tests.Players
         {
             var playerService = new PubgPlayerService(Storage.ApiKey);
 
-            var region = PubgRegion.PCEurope;
+            var region = PubgRegion.XboxEurope;
             var playerId = Storage.GetMatch(region).Rosters.SelectMany(r => r.Participants).Select(p => p.Stats.PlayerId).FirstOrDefault();
             var seasonId = Storage.GetSeason(region).Id;
 
@@ -119,7 +119,7 @@ namespace Pubg.Net.Tests.Players
             playerSeason.GameModeStats.Squad.Should().NotBeNull();
             playerSeason.GameModeStats.SquadFPP.Should().NotBeNull();
         }
-
+        
         [Fact]
         public void GetPlayers_Throws_Exception_When_NotFound()
         {
@@ -130,7 +130,7 @@ namespace Pubg.Net.Tests.Players
                 PlayerNames = new string[] { "NonExistantPlayerHopefully" }
             };
 
-            Assert.Throws<PubgNotFoundException>(() => playerService.GetPlayers(PubgRegion.PCEurope, filter));
+            Assert.Throws<PubgNotFoundException>(() => playerService.GetPlayers(PubgPlatform.Steam, filter));
         }
     }
 }
