@@ -17,7 +17,7 @@ namespace Pubg.Net.Tests.Matches
             var samples = Storage.GetSamples(PubgRegion.PCEurope);
             var matchService = new PubgMatchService(Storage.ApiKey);
 
-            var match = matchService.GetMatchPC(samples.MatchIds.FirstOrDefault());
+            var match = matchService.GetMatch(samples.MatchIds.FirstOrDefault());
 
             match.Rosters.Should().NotBeNull();
             match.GameMode.Should().NotBe(PubgGameMode.Unknown);
@@ -42,7 +42,7 @@ namespace Pubg.Net.Tests.Matches
             var samples = Storage.GetSamples(region);
             var matchService = new PubgMatchService(Storage.ApiKey);
 
-            var match = matchService.GetMatchXbox(region, samples.MatchIds.FirstOrDefault());
+            var match = matchService.GetMatch(PubgPlatform.Xbox, samples.MatchIds.FirstOrDefault());
 
             match.ShardId.Should().Equals(region.Serialize());
             match.Rosters.Should().NotBeNull();
@@ -64,13 +64,13 @@ namespace Pubg.Net.Tests.Matches
         [Fact]
         public void Throws_Exception_When_NotFound_OnPC()
         {
-            Assert.Throws<PubgNotFoundException>(() => new PubgMatchService(Storage.ApiKey).GetMatchPC(Guid.Empty.ToString()));
+            Assert.Throws<PubgNotFoundException>(() => new PubgMatchService(Storage.ApiKey).GetMatch(Guid.Empty.ToString()));
         }
 
         [Fact]
         public void Throws_Exception_When_NotFound_OnXbox()
         {
-            Assert.Throws<PubgNotFoundException>(() => new PubgMatchService(Storage.ApiKey).GetMatchXbox(PubgRegion.XboxEurope, Guid.Empty.ToString()));
+            Assert.Throws<PubgNotFoundException>(() => new PubgMatchService(Storage.ApiKey).GetMatch(PubgPlatform.Xbox, Guid.Empty.ToString()));
         }
     }
 }

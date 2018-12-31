@@ -15,5 +15,8 @@ namespace Pubg.Net
 
         [JsonProperty]
         public int SeatIndex { get; set; }
+
+        [JsonProperty]
+        public float MaxSpeed { get; set; }
     }
 }

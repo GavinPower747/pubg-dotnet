@@ -13,7 +13,7 @@ namespace Pubg.Net.Tests.Telemetry
         public void Can_Pull_Telemetry_From_Match_OnPc()
         {
             var region = PubgRegion.PCEurope;
-            var match = Storage.GetMatch(region);
+            var match = Storage.GetMatch(PubgPlatform.Steam);
             var asset = match.Assets.FirstOrDefault();
             var telemetryService = new PubgTelemetryService();
 
@@ -32,7 +32,7 @@ namespace Pubg.Net.Tests.Telemetry
         public void Can_Pull_Telemetry_From_Match_OnXbox()
         {
             var region = PubgRegion.XboxEurope;
-            var match = Storage.GetMatch(region);
+            var match = Storage.GetMatch(PubgPlatform.Steam);
             var asset = match.Assets.FirstOrDefault();
             var telemetryService = new PubgTelemetryService();
 
