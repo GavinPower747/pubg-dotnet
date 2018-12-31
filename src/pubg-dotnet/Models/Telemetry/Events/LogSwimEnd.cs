@@ -9,5 +9,8 @@ namespace Pubg.Net.Models.Telemetry.Events
 
         [JsonProperty]
         public float SwimDistance { get; set; }
+
+        [JsonProperty]
+        public float MaxSwimDeptOfWater { get; set; }
     }
 }

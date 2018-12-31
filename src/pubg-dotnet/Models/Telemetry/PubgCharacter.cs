@@ -21,5 +21,14 @@ namespace Pubg.Net
 
         [JsonProperty]
         public string AccountId { get; set; }
+
+        [JsonProperty]
+        public bool IsInRedZone { get; set; }
+
+        [JsonProperty]
+        public bool IsInBlueZone { get; set; }
+
+        [JsonProperty]
+        public string[] Zone { get; set; }
     }
 }

@@ -27,5 +27,11 @@ namespace Pubg.Net.Models.Telemetry.Events
 
         [JsonProperty]
         public int DBNOId { get; set; }
+
+        [JsonProperty]
+        public string[] DamageCauserAdditionalInfo { get; set; }
+
+        [JsonProperty]
+        public string DamageReason { get; set; }
     }
 }
