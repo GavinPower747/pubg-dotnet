@@ -15,10 +15,8 @@ namespace Pubg.Net.Values
 
         internal static class Matches
         {
-            internal static string MatchesPCEndpoint(PubgPlatform platform) => string.Format(ShardedBaseUrl + "/matches", platform.Serialize());
-            internal static string MatchesPCEndpoint(PubgPlatform platform, string matchId) => MatchesPCEndpoint(platform) + $"/{matchId}";
-            internal static string MatchesXboxEndpoint(PubgRegion region) => string.Format(ShardedBaseUrl + "/matches", region.Serialize());
-            internal static string MatchesXboxEndpoint(PubgRegion region, string matchId) => MatchesXboxEndpoint(region) + $"/{matchId}";
+            internal static string MatchesEndpoint(PubgPlatform platform) => string.Format(ShardedBaseUrl + "/matches", platform.Serialize());
+            internal static string MatchesEndpoint(PubgPlatform platform, string matchId) => MatchesEndpoint(platform) + $"/{matchId}";
         }
 
         internal static class Status

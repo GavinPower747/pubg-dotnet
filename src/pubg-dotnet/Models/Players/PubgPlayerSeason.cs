@@ -1,27 +1,11 @@
 ﻿using Newtonsoft.Json;
 using Pubg.Net.Infrastructure.JsonConverters;
-using Pubg.Net.Models.Base;
-using Pubg.Net.Models.Stats;
 using System.Collections.Generic;
 
 namespace Pubg.Net
 {
-    public class PubgPlayerSeason : PubgEntity
-    {
-        [JsonProperty]
-        public PubgSeasonStats GameModeStats { get; set; }
-
-        [JsonProperty]
-        public PubgSeasonStats LifetimeStats { get; set; }
-
-        [JsonProperty("player")]
-        [JsonConverter(typeof(RelationshipIdConverter))]
-        public string PlayerId { get; set; }
-
-        [JsonProperty("season")]
-        [JsonConverter(typeof(RelationshipIdConverter))]
-        public string SeasonId { get; set; }
-
+    public class PubgPlayerSeason : PubgStatEntity
+    {        
         [JsonProperty("matchesSolo")]
         [JsonConverter(typeof(RelationshipIdConverter))]
         public IEnumerable<string> SoloMatchIds { get; set; }

@@ -14,6 +14,8 @@ namespace Pubg.Net
         [EnumMember(Value = "psn")]
         PlayStation,
         [EnumMember(Value = "kakao")]
-        Kakao
+        Kakao,
+        [EnumMember(Value = "tournament")]
+        Tournament
     }
 }
