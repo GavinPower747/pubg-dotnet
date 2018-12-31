@@ -14,7 +14,7 @@ namespace Pubg.Net.Tests.Players
         {
             var playerService = new PubgPlayerService(Storage.ApiKey);
 
-            var playerNames = Storage.GetMatch(PubgRegion.PCEurope).Rosters.SelectMany(r => r.Participants).Select(p => p.Stats.Name).Take(5).ToArray();
+            var playerNames = Storage.GetMatch(PubgPlatform.Steam).Rosters.SelectMany(r => r.Participants).Select(p => p.Stats.Name).Take(5).ToArray();
 
             var filter = new GetPubgPlayersRequest
             {
@@ -32,7 +32,7 @@ namespace Pubg.Net.Tests.Players
         {
             var playerService = new PubgPlayerService(Storage.ApiKey);
 
-            var playerIds = Storage.GetMatch(PubgRegion.PCEurope).Rosters.SelectMany(r => r.Participants).Select(p => p.Stats.PlayerId).Take(5).ToArray();
+            var playerIds = Storage.GetMatch(PubgPlatform.Steam).Rosters.SelectMany(r => r.Participants).Select(p => p.Stats.PlayerId).Take(5).ToArray();
 
             var filter = new GetPubgPlayersRequest
             {
@@ -50,7 +50,7 @@ namespace Pubg.Net.Tests.Players
         {
             var playerService = new PubgPlayerService(Storage.ApiKey);
 
-            var playerId = Storage.GetMatch(PubgRegion.PCEurope).Rosters.SelectMany(r => r.Participants).Select(p => p.Stats.PlayerId).FirstOrDefault();
+            var playerId = Storage.GetMatch(PubgPlatform.Steam).Rosters.SelectMany(r => r.Participants).Select(p => p.Stats.PlayerId).FirstOrDefault();
 
             var player = playerService.GetPlayer(PubgPlatform.Steam, playerId);
 
@@ -65,7 +65,7 @@ namespace Pubg.Net.Tests.Players
             var playerService = new PubgPlayerService(Storage.ApiKey);
 
             var region = PubgRegion.PCEurope;
-            var playerId = Storage.GetMatch(region).Rosters.SelectMany(r => r.Participants).Select(p => p.Stats.PlayerId).FirstOrDefault();
+            var playerId = Storage.GetMatch(PubgPlatform.Steam).Rosters.SelectMany(r => r.Participants).Select(p => p.Stats.PlayerId).FirstOrDefault();
             var seasonId = Storage.GetSeason(region).Id;
 
             var playerSeason = playerService.GetPlayerSeasonPC(playerId, seasonId);
@@ -83,13 +83,12 @@ namespace Pubg.Net.Tests.Players
             playerSeason.GameModeStats.SquadFPP.Should().NotBeNull();
         }
 
-        //[Fact]
+        [Fact]
         public void Can_Get_LifetimeStats_For_Player_OnPC()
         {
             var playerService = new PubgPlayerService(Storage.ApiKey);
 
-            var region = PubgRegion.PCEurope;
-            var playerId = Storage.GetMatch(region).Rosters.SelectMany(r => r.Participants).Select(p => p.Stats.PlayerId).FirstOrDefault();
+            var playerId = Storage.GetMatch(PubgPlatform.Steam).Rosters.SelectMany(r => r.Participants).Select(p => p.Stats.PlayerId).FirstOrDefault();
 
             var lifeTimeStats = playerService.GetPlayerLifetimeStats(PubgPlatform.Steam, playerId);
 
@@ -102,7 +101,7 @@ namespace Pubg.Net.Tests.Players
             var playerService = new PubgPlayerService(Storage.ApiKey);
 
             var region = PubgRegion.XboxEurope;
-            var playerId = Storage.GetMatch(region).Rosters.SelectMany(r => r.Participants).Select(p => p.Stats.PlayerId).FirstOrDefault();
+            var playerId = Storage.GetMatch(PubgPlatform.Steam).Rosters.SelectMany(r => r.Participants).Select(p => p.Stats.PlayerId).FirstOrDefault();
             var seasonId = Storage.GetSeason(region).Id;
 
             var playerSeason = playerService.GetPlayerSeasonXbox(region, playerId, seasonId);

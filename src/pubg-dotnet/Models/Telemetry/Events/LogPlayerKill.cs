@@ -31,7 +31,7 @@ namespace Pubg.Net
         public PubgCharacter Assistant { get; set; }
 
         [JsonProperty]
-        public string DamageCauserAdditionalInfo { get; set; }
+        public string[] DamageCauserAdditionalInfo { get; set; }
 
         [JsonProperty]
         public int DBNOId { get; set; }

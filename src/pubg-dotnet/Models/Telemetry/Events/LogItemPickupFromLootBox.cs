@@ -2,7 +2,7 @@
 
 namespace Pubg.Net.Models.Telemetry.Events
 {
-    public class LogItemPickupFromLootBox
+    public class LogItemPickupFromLootBox : PubgTelemetryEvent
     {
         [JsonProperty]
         public PubgCharacter Character { get; set; }

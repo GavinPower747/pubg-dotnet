@@ -2,7 +2,7 @@
 
 namespace Pubg.Net.Models.Telemetry.Events
 {
-    public class LogVaultStart
+    public class LogVaultStart : PubgTelemetryEvent
     {
         [JsonProperty]
         public PubgCharacter Character { get; set; }
