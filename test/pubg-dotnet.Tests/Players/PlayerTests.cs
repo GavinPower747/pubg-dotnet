@@ -93,6 +93,7 @@ namespace Pubg.Net.Tests.Players
             var lifeTimeStats = playerService.GetPlayerLifetimeStats(PubgPlatform.Steam, playerId);
 
             lifeTimeStats.PlayerId.Should().BeEquivalentTo(playerId);
+            lifeTimeStats.SeasonId.Should().BeEquivalentTo("lifetime");
             lifeTimeStats.GameModeStats.Should().NotBeNull();
         }
 
