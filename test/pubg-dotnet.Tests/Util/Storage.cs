@@ -47,7 +47,7 @@ namespace Pubg.Net.Tests.Util
 
             var region = platform == PubgPlatform.Xbox ? PubgRegion.XboxEurope : PubgRegion.PCEurope;
 
-            var playerNames = GetMatch(region).Rosters.SelectMany(r => r.Participants).Select(p => p.Stats.Name).Take(5);
+            var playerNames = GetMatch(platform).Rosters.SelectMany(r => r.Participants).Select(p => p.Stats.Name).Take(5);
             var players = playerService.GetPlayers(platform, new GetPubgPlayersRequest { PlayerNames = playerNames.ToArray() });
 
             StoredItems.AddRange(players);
@@ -55,20 +55,19 @@ namespace Pubg.Net.Tests.Util
             return players.FirstOrDefault();
         }
 
-        public static PubgMatch GetMatch(PubgRegion region)
+        public static PubgMatch GetMatch(PubgPlatform platform)
         {
-            var match = StoredItems.OfType<PubgMatch>().FirstOrDefault(p => p.ShardId == region.Serialize());
+            var match = StoredItems.OfType<PubgMatch>().FirstOrDefault(p => p.ShardId == platform.Serialize());
 
             if (match != null)
                 return match;
 
+            var region = platform == PubgPlatform.Xbox ? PubgRegion.XboxEurope : PubgRegion.PCEurope;
+
             var samples = GetSamples(region);
             var matchService = new PubgMatchService(ApiKey);
-
-            if (region.IsPC())
-                match = matchService.GetMatchPC(samples.MatchIds.First());
-            else if(region.IsXbox())
-                match = matchService.GetMatchXbox(region, samples.MatchIds.First());
+        
+            match = matchService.GetMatch(platform, samples.MatchIds.First());
 
             StoredItems.Add(match);
 

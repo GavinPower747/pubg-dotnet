@@ -41,6 +41,14 @@ namespace Pubg.Net.UnitTests.JsonConverters
         [InlineData(typeof(LogWheelDestroy))]
         [InlineData(typeof(LogPlayerMakeGroggy))]
         [InlineData(typeof(LogPlayerRevive))]
+        [InlineData(typeof(LogHeal))]
+        [InlineData(typeof(LogItemPickupFromCarePackage))]
+        [InlineData(typeof(LogItemPickupFromLootBox))]
+        [InlineData(typeof(LogObjectDestroy))]
+        [InlineData(typeof(LogParachuteLanding))]
+        [InlineData(typeof(LogRedZoneEnded))]
+        [InlineData(typeof(LogVaultStart))]
+        [InlineData(typeof(LogWeaponFireCount))]
         public void Can_Convert_All_TelemeteryEvents(Type eventType)
         {
             var fixture = new Fixture();

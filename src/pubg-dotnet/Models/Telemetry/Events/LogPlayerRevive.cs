@@ -9,5 +9,8 @@ namespace Pubg.Net.Models.Telemetry.Events
 
         [JsonProperty]
         public PubgCharacter Victim { get; set; }
+
+        [JsonProperty]
+        public int DBNOId { get; set; }
     }
 }

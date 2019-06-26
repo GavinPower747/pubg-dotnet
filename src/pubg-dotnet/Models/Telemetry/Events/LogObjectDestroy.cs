@@ -2,15 +2,15 @@
 
 namespace Pubg.Net.Models.Telemetry.Events
 {
-    public class LogSwimEnd : PubgTelemetryEvent
+    public class LogObjectDestroy : PubgTelemetryEvent
     {
         [JsonProperty]
         public PubgCharacter Character { get; set; }
 
         [JsonProperty]
-        public float SwimDistance { get; set; }
+        public string ObjectType { get; set; }
 
         [JsonProperty]
-        public float MaxSwimDeptOfWater { get; set; }
+        public Location ObjectLocation { get; set; }
     }
 }

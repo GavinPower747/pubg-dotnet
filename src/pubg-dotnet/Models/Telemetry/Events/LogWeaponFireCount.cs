@@ -2,15 +2,15 @@
 
 namespace Pubg.Net.Models.Telemetry.Events
 {
-    public class LogSwimEnd : PubgTelemetryEvent
+    public class LogWeaponFireCount : PubgTelemetryEvent
     {
         [JsonProperty]
         public PubgCharacter Character { get; set; }
 
         [JsonProperty]
-        public float SwimDistance { get; set; }
+        public string WeaponId { get; set; }
 
         [JsonProperty]
-        public float MaxSwimDeptOfWater { get; set; }
+        public int FireCount { get; set; }
     }
 }
