@@ -17,11 +17,11 @@ namespace Pubg.Net
         public PubgSamplesService() : base() { }
         public PubgSamplesService(string apiKey) : base(apiKey) { }
 
-        public PubgMatchSample GetMatchSamples(PubgRegion region, string apiKey = null) => GetMatchSamples(region, new GetSamplesRequest { ApiKey = apiKey });
+        public PubgMatchSample GetMatchSamples(PubgPlatform platform, string apiKey = null) => GetMatchSamples(platform, new GetSamplesRequest { ApiKey = apiKey });
 
-        public PubgMatchSample GetMatchSamples(PubgRegion region, GetSamplesRequest request)
+        public PubgMatchSample GetMatchSamples(PubgPlatform platform, GetSamplesRequest request)
         {
-            var url = RequestBuilder.BuildRequestUrl(Api.Samples.SamplesEndpoint(region), request);
+            var url = RequestBuilder.BuildRequestUrl(Api.Samples.SamplesEndpoint(platform), request);
             var apiKey = string.IsNullOrEmpty(request.ApiKey) ? ApiKey : request.ApiKey;
 
             var collectionJson = HttpRequestor.GetString(url, apiKey);
@@ -29,12 +29,12 @@ namespace Pubg.Net
             return JsonConvert.DeserializeObject<IEnumerable<PubgMatchSample>>(collectionJson, new JsonApiSerializerSettings()).FirstOrDefault();
         }
 
-        public Task<PubgMatchSample> GetMatchSamplesAsync(PubgRegion region, string apiKey = null, CancellationToken cancellationToken = default(CancellationToken)) 
-            => GetMatchSamplesAsync(region, new GetSamplesRequest { ApiKey = apiKey }, cancellationToken);
+        public Task<PubgMatchSample> GetMatchSamplesAsync(PubgPlatform platform, string apiKey = null, CancellationToken cancellationToken = default(CancellationToken)) 
+            => GetMatchSamplesAsync(platform, new GetSamplesRequest { ApiKey = apiKey }, cancellationToken);
 
-        public async Task<PubgMatchSample> GetMatchSamplesAsync(PubgRegion region, GetSamplesRequest request, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<PubgMatchSample> GetMatchSamplesAsync(PubgPlatform platform, GetSamplesRequest request, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var url = RequestBuilder.BuildRequestUrl(Api.Samples.SamplesEndpoint(region), request);
+            var url = RequestBuilder.BuildRequestUrl(Api.Samples.SamplesEndpoint(platform), request);
             var apiKey = string.IsNullOrEmpty(request.ApiKey) ? ApiKey : request.ApiKey;
 
             var collectionJson = await HttpRequestor.GetStringAsync(url, cancellationToken, apiKey).ConfigureAwait(false);

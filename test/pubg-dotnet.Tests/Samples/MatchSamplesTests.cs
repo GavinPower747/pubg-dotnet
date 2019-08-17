@@ -12,7 +12,7 @@ namespace pubg.net.Tests.Samples
         [Fact]
         public void Can_Get_MatchSamples_When_NoFilterGiven()
         {
-            var region = PubgRegion.PCEurope;
+            var region = PubgPlatform.Steam;
             var samplesService = new PubgSamplesService(Storage.ApiKey);
 
             var matchSamples = samplesService.GetMatchSamples(region);
@@ -25,7 +25,7 @@ namespace pubg.net.Tests.Samples
         [Fact]
         public void Can_Get_MatchSamples_When_FilterGiven()
         {
-            var region = PubgRegion.PCEurope;
+            var region = PubgPlatform.Steam;
             var samplesService = new PubgSamplesService(Storage.ApiKey);
             var createdDate = DateTime.UtcNow.AddDays(-2);
 

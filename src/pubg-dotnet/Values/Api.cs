@@ -33,7 +33,7 @@ namespace Pubg.Net.Values
 
         internal static class Samples
         {
-            internal static string SamplesEndpoint(PubgRegion region) => string.Format(ShardedBaseUrl + "/samples", region.Serialize());
+            internal static string SamplesEndpoint(PubgPlatform platform) => string.Format(ShardedBaseUrl + "/samples", platform.Serialize());
         }
 
         internal static class Seasons
