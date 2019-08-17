@@ -2,7 +2,6 @@
 using Pubg.Net;
 using Pubg.Net.Services.Leaderboard;
 using Pubg.Net.Tests.Util;
-using System.Linq;
 using Xunit;
 
 namespace pubg.net.Tests.Leaderboard
@@ -11,11 +10,11 @@ namespace pubg.net.Tests.Leaderboard
     {
         [Theory]
         [InlineData(PubgGameMode.Duo)]
-        [InlineData(PubgGameMode.DuoFPP)]
+        [InlineData(PubgGameMode.DuoFpp)]
         [InlineData(PubgGameMode.Solo)]
-        [InlineData(PubgGameMode.SoloFPP)]
+        [InlineData(PubgGameMode.SoloFpp)]
         [InlineData(PubgGameMode.Squad)]
-        [InlineData(PubgGameMode.SquadFPP)]
+        [InlineData(PubgGameMode.SquadFpp)]
         public void Can_Get_Leaderboard(PubgGameMode gameMode)
         {
             var service = new PubgLeaderboardService(Storage.ApiKey);
