@@ -20,8 +20,7 @@ namespace Pubg.Net.Tests.Telemetry
             var telemetry = telemetryService.GetTelemetry(region, asset);
 
             telemetry.Should().NotBeEmpty();
-            //New Telemetry events have been added, don't have time to updated and need to push other changes
-            //Assert.All(telemetry, t => t.Should().NotBeOfType<UnknownTelemetryEvent>());
+            Assert.All(telemetry, t => t.Should().NotBeOfType<UnknownTelemetryEvent>());
 
             var matchDefinition = telemetry.OfType<LogMatchDefinition>().FirstOrDefault();
 
@@ -39,8 +38,7 @@ namespace Pubg.Net.Tests.Telemetry
             var telemetry = telemetryService.GetTelemetry(region, asset);
 
             telemetry.Should().NotBeEmpty();
-            //New Telemetry events have been added, don't have time to updated and need to push other changes
-            //Assert.All(telemetry, t => t.Should().NotBeOfType<UnknownTelemetryEvent>());
+            Assert.All(telemetry, t => t.Should().NotBeOfType<UnknownTelemetryEvent>());
 
             var matchDefinition = telemetry.OfType<LogMatchDefinition>().FirstOrDefault();
 

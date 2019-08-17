@@ -20,16 +20,16 @@ namespace Pubg.Net.Tests.Util
         public static string ApiKey => Environment.GetEnvironmentVariable("PUBG_API_KEY");
         public static List<PubgEntity> StoredItems { get; set; }
 
-        public static PubgMatchSample GetSamples(PubgRegion region)
+        public static PubgMatchSample GetSamples(PubgPlatform platform)
         {
-            var samples = StoredItems.OfType<PubgMatchSample>().FirstOrDefault(p => p.ShardId == region.Serialize());
+            var samples = StoredItems.OfType<PubgMatchSample>().FirstOrDefault(p => p.ShardId == platform.Serialize());
 
             if (samples != null)
                 return samples;
 
             var sampleService = new PubgSamplesService(ApiKey);
 
-            samples = sampleService.GetMatchSamples(region);
+            samples = sampleService.GetMatchSamples(platform);
 
             StoredItems.Add(samples);
 
@@ -62,9 +62,7 @@ namespace Pubg.Net.Tests.Util
             if (match != null)
                 return match;
 
-            var region = platform == PubgPlatform.Xbox ? PubgRegion.XboxEurope : PubgRegion.PCEurope;
-
-            var samples = GetSamples(region);
+            var samples = GetSamples(platform);
             var matchService = new PubgMatchService(ApiKey);
         
             match = matchService.GetMatch(platform, samples.MatchIds.First());
