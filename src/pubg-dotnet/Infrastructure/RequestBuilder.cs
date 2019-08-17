@@ -23,7 +23,7 @@ namespace Pubg.Net.Infrastructure
 
             foreach (var property in request.GetType().GetRuntimeProperties())
             {
-                if (excludedProperties.Contains(property)) continue;
+                if (excludedProperties.Any(ep => ep.Name.Equals(property.Name))) continue;
 
                 var value = property.GetValue(request, null);
                 if (value == null) continue;
