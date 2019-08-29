@@ -14,7 +14,7 @@ namespace Pubg.Net.Tests.Matches
         [Fact]
         public void Can_Retrieve_Match_ForPC()
         {
-            var samples = Storage.GetSamples(PubgRegion.PCEurope);
+            var samples = Storage.GetSamples(PubgPlatform.Steam);
             var matchService = new PubgMatchService(Storage.ApiKey);
 
             var match = matchService.GetMatch(samples.MatchIds.FirstOrDefault());
@@ -38,13 +38,11 @@ namespace Pubg.Net.Tests.Matches
         [Fact]
         public void Can_Retrieve_Match_ForXbox()
         {
-            var region = PubgRegion.XboxEurope;
-            var samples = Storage.GetSamples(region);
+            var samples = Storage.GetSamples(PubgPlatform.Xbox);
             var matchService = new PubgMatchService(Storage.ApiKey);
 
             var match = matchService.GetMatch(PubgPlatform.Xbox, samples.MatchIds.FirstOrDefault());
 
-            match.ShardId.Should().Equals(region.Serialize());
             match.Rosters.Should().NotBeNull();
 
             Assert.All(match.Rosters, r => r.Stats.Rank.Should().BeGreaterThan(0));
@@ -57,7 +55,6 @@ namespace Pubg.Net.Tests.Matches
             Assert.All(participants, p => p.Stats.Should().NotBeNull());
             Assert.All(participants, p => p.Stats.KillPlace.Should().BeGreaterThan(0));
             Assert.All(participants, p => p.Stats.WinPlace.Should().BeGreaterThan(0));
-            Assert.All(participants, p => p.ShardId.Should().Equals(region.Serialize()));
             Assert.All(participants, p => p.Id.Should().NotBeNullOrWhiteSpace());
         }
 

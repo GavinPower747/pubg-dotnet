@@ -1,4 +1,4 @@
-version: 2.2.0.{build}
+version: 2.3.0.{build}
 image: Visual Studio 2017
 skip_tags: true
 
@@ -10,7 +10,7 @@ branches:
 deploy:
 - provider: NuGet
   api_key:
-    secure: tRU8M11vrr1xpuhdmBSOSSjQZXAEQVGHR1dP+f/c+RkA1+ZJqCDY2Rsv9Nk4okeT
+    secure: 7bO/kGissHvP4YkwclB3U0KN7Qdl70XYUDIr0Fk9EYd6HCKljLgC8JRFXklEPbWz
   on:
     branch: master
 
