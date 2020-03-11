@@ -22,6 +22,8 @@ namespace Pubg.Net
         [EnumMember(Value = "DihorOtok_Main")]
         Vikendi,
         [EnumMember(Value = "Baltic_Main")]
-        Baltic
+        Erangel_Remastered,
+        [EnumMember(Value = "Summerland_Main")]
+        Karakin
     }
 }
