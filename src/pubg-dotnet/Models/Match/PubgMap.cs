@@ -20,6 +20,8 @@ namespace Pubg.Net
         [EnumMember(Value = "Range_Main")]
         TrainingRange,
         [EnumMember(Value = "DihorOtok_Main")]
-        Vikendi
+        Vikendi,
+        [EnumMember(Value = "Baltic_Main")]
+        Baltic
     }
 }
