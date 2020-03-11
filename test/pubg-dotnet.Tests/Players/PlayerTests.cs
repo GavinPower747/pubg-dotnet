@@ -64,9 +64,8 @@ namespace Pubg.Net.Tests.Players
         {
             var playerService = new PubgPlayerService(Storage.ApiKey);
 
-            var region = PubgRegion.PCEurope;
             var playerId = Storage.GetMatch(PubgPlatform.Steam).Rosters.SelectMany(r => r.Participants).Select(p => p.Stats.PlayerId).FirstOrDefault();
-            var seasonId = Storage.GetSeason(region).Id;
+            var seasonId = Storage.GetSeason(PubgPlatform.Steam).Id;
 
             var playerSeason = playerService.GetPlayerSeasonPC(playerId, seasonId);
 
@@ -95,29 +94,6 @@ namespace Pubg.Net.Tests.Players
             lifeTimeStats.PlayerId.Should().BeEquivalentTo(playerId);
             lifeTimeStats.SeasonId.Should().BeEquivalentTo("lifetime");
             lifeTimeStats.GameModeStats.Should().NotBeNull();
-        }
-
-        public void Can_Get_Season_For_Player_OnXbox()
-        {
-            var playerService = new PubgPlayerService(Storage.ApiKey);
-
-            var region = PubgRegion.XboxEurope;
-            var playerId = Storage.GetMatch(PubgPlatform.Steam).Rosters.SelectMany(r => r.Participants).Select(p => p.Stats.PlayerId).FirstOrDefault();
-            var seasonId = Storage.GetSeason(region).Id;
-
-            var playerSeason = playerService.GetPlayerSeasonXbox(region, playerId, seasonId);
-
-            playerSeason.Should().NotBeNull();
-            playerSeason.GameModeStats.Should().NotBeNull();
-            playerSeason.SeasonId.Should().NotBeNullOrWhiteSpace();
-            playerSeason.PlayerId.Should().NotBeNullOrWhiteSpace();
-            playerSeason.GameModeStats.Should().NotBeNull();
-            playerSeason.GameModeStats.Solo.Should().NotBeNull();
-            playerSeason.GameModeStats.SoloFPP.Should().NotBeNull();
-            playerSeason.GameModeStats.Duo.Should().NotBeNull();
-            playerSeason.GameModeStats.DuoFPP.Should().NotBeNull();
-            playerSeason.GameModeStats.Squad.Should().NotBeNull();
-            playerSeason.GameModeStats.SquadFPP.Should().NotBeNull();
         }
         
         [Fact]

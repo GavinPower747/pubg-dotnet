@@ -17,9 +17,10 @@ namespace pubg.net.Tests.Leaderboard
         [InlineData(PubgGameMode.SquadFpp)]
         public void Can_Get_Leaderboard(PubgGameMode gameMode)
         {
+            var season = Storage.GetSeason(PubgPlatform.Steam);
             var service = new PubgLeaderboardService(Storage.ApiKey);
 
-            var leaderboard = service.GetGameModeLeaderboard(PubgPlatform.Steam, gameMode);
+            var leaderboard = service.GetGameModeLeaderboard(PubgPlatform.Steam, gameMode, season.Id);
 
             leaderboard.Id.Should().NotBeNullOrEmpty();
             leaderboard.ShardId.Should().NotBeNullOrEmpty();
