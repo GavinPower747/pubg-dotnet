@@ -12,9 +12,9 @@ namespace Pubg.Net.Services.Leaderboard
         public PubgLeaderboardService() : base() { }
         public PubgLeaderboardService(string apiKey) : base(apiKey) { }
 
-        public virtual PubgLeaderboard GetGameModeLeaderboard(PubgPlatform platform, PubgGameMode gameMode, string apiKey = null)
+        public virtual PubgLeaderboard GetGameModeLeaderboard(PubgPlatform platform, PubgGameMode gameMode, string seasonId, string apiKey = null)
         {
-            var url = Api.Leaderboard.LeaderboardEndpoint(platform, gameMode);
+            var url = Api.Leaderboard.LeaderboardEndpoint(platform, gameMode, seasonId);
             apiKey = string.IsNullOrEmpty(apiKey) ? ApiKey : apiKey;
 
             var leaderboardJson = HttpRequestor.GetString(url, apiKey);
@@ -22,9 +22,9 @@ namespace Pubg.Net.Services.Leaderboard
             return JsonConvert.DeserializeObject<PubgLeaderboard>(leaderboardJson, new JsonApiSerializerSettings());
         }
 
-        public virtual async Task<PubgLeaderboard> GetGameModeLeaderboardAsync(PubgPlatform platform, PubgGameMode gameMode, string apiKey = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<PubgLeaderboard> GetGameModeLeaderboardAsync(PubgPlatform platform, PubgGameMode gameMode, string seasonId, string apiKey = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var url = Api.Leaderboard.LeaderboardEndpoint(platform, gameMode);
+            var url = Api.Leaderboard.LeaderboardEndpoint(platform, gameMode, seasonId);
             apiKey = string.IsNullOrEmpty(apiKey) ? ApiKey : apiKey;
 
             var leaderboardJson = await HttpRequestor.GetStringAsync(url, cancellationToken, apiKey).ConfigureAwait(false);

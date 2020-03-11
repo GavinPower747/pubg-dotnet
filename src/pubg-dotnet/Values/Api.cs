@@ -9,8 +9,8 @@ namespace Pubg.Net.Values
 
         internal static class Leaderboard
         {
-            internal static string LeaderboardEndpoint(PubgPlatform platform, PubgGameMode gameMode) 
-                => string.Format(ShardedBaseUrl + "/leaderboards/{1}", platform.Serialize(), gameMode.Serialize());
+            internal static string LeaderboardEndpoint(PubgPlatform platform, PubgGameMode gameMode, string seasonId) 
+                => string.Format(ShardedBaseUrl + "/leaderboards/{1}/{2}", platform.Serialize(), seasonId, gameMode.Serialize());
         }
 
         internal static class Matches

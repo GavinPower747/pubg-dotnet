@@ -72,25 +72,17 @@ namespace Pubg.Net.Tests.Util
             return match;
         }
 
-        public static PubgSeason GetSeason(PubgRegion region)
+        public static PubgSeason GetSeason(PubgPlatform region)
         {
-            PubgSeason season = null;
-
-            if(region.IsXbox())
-                season = StoredItems.OfType<PubgSeason>().FirstOrDefault(p => p.Id.ToLowerInvariant().Contains("xb"));
-            else if(region.IsPC())
-                season = StoredItems.OfType<PubgSeason>().FirstOrDefault(p => !p.Id.ToLowerInvariant().Contains("xb"));
-
+            PubgSeason season = StoredItems.OfType<PubgSeason>().FirstOrDefault();
+            
             if (season != null)
                 return season;
 
             var seasonService = new PubgSeasonService(ApiKey);
             List<PubgSeason> seasons = new List<PubgSeason>();
 
-            if (region.IsPC())
-                seasons = seasonService.GetSeasonsPC().ToList();
-            else if (region.IsXbox())
-                seasons = seasonService.GetSeasonsXbox(region).ToList();
+            seasons = seasonService.GetSeasons().ToList();
 
             seasons.ForEach(s => StoredItems.Add(s));
 
